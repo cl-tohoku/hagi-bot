@@ -4,7 +4,7 @@
 このリポジトリには，[対話システムライブコンペティション6](https://sites.google.com/view/dslc6/%E3%83%9B%E3%83%BC%E3%83%A0)に提出し，予選を1位で通過した対話システム「hagi-bot」のモデルの詳細が記述されたスクリプト及び本システムで行った実験結果が含まれています．
 
 ## 配布リソースに関する説明
-本システムはマルチモーダル対話システムであり，アバターを動かすには運営から配布されたソフトウェアが必要となります．配布ソフトウェアの必要ないテキストベースで応答生成するローカルモデルを追加で公開します．
+本システムはマルチモーダル対話システムであり，アバターを動かすには運営から配布されたソフトウェアが必要となります．配布ソフトウェアを用いないコマンドラインでテキストベースの応答生成をするローカルモデルを追加で公開します．
 
 本コンペティションに提出したマルチモーダルモデルについては multimodal フォルダで公開します．
 
@@ -28,14 +28,14 @@
    openai.api_key = "[自身のOpenAI API キー]"
    ```
 
-#### プロンプト
-プロンプト内容は[こちら](./local/clients/prompts/system_instructions.py)で確認できます．
+### プロンプト
+プロンプトに記述した内容は[こちら](./local/clients/prompts/system_instructions.py)で確認できます．
 
-### 利用方法
-#### マルチモーダルモデルの実行方法
-[こちら](https://sites.google.com/view/dslc6/getting-started)こちらを参考にしてください．
+## 利用方法
+### マルチモーダルモデルの実行方法
+[こちら](https://sites.google.com/view/dslc6/getting-started)を参考にしてください．
 
-#### ローカルモデルの実行方法
+### ローカルモデルの実行方法
 実行環境
 - Python 3.10
 - openai == 0.28.1
@@ -54,7 +54,7 @@ pip install -r requirements.txt
 python run.py --stream --main-model gpt-4 --slot-model gpt-4
 ```
 
-#### コマンドライン引数についての補足
+### コマンドライン引数についての補足
 |コマンドライン引数|概要|
 | ---- | ---------- |
 |stream|生成方法の変更|
@@ -63,7 +63,7 @@ python run.py --stream --main-model gpt-4 --slot-model gpt-4
 |debug|生成時間やスロットの確認|
 
 - stream
-  - 応答を一度に生成するか，区切り文字(、。?!…)毎に生成するかを指定します
+  - 応答を一度に生成するか，区切り文字 (、。?!…) 毎に生成するかを指定します
   - --stream 無：一度に生成
   - --stream 有：区切り文字毎に生成
 - main-model
@@ -71,7 +71,7 @@ python run.py --stream --main-model gpt-4 --slot-model gpt-4
   - --main-model gpt-3.5-turbo：GPT-3.5-turbo を指定
   - --main-model gpt-4：GPT-4を指定
 - slot-model
-  - 応答生成モデルを指定します
+  - スロットモデルを指定します
   - --slot-model gpt-3.5-turbo：GPT-3.5-turbo を指定
   - --slot-model gpt-4：GPT-4を指定
 - debug
@@ -81,7 +81,7 @@ python run.py --stream --main-model gpt-4 --slot-model gpt-4
 
 ## 実験結果の詳細
 ### 実験内容
-応答を一度に生成する場合と，区切り文字(、。?!…)毎に生成する場合の最初の応答時間の比較を行った．
+応答を一度に生成する場合と，区切り文字 (、。?!…) 毎に生成する場合の最初の応答時間の比較を行った．
 
 ### 実験設定
 - ローカルモデルを用いて計測した
