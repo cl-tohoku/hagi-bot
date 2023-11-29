@@ -5,7 +5,6 @@ import asyncio
 import time
 import tiktoken
 
-
 from clients.models.config import ModelConfig
 from clients.main_client import MainClient
 from clients.slot_content_client import SlotContentClient
@@ -31,129 +30,11 @@ def warn_print(args, message: str) -> None:
             RESET = "\033[0m"
             print(f"{YELLOW}[WARNING] {message}{RESET}")
 
-
-def main(args) -> None:
-    openai.api_key = os.getenv("OPENAI_API_KEY")
-
-    # main model の設定
-    main_model_config = ModelConfig(
-        model=args.main_model, 
-        history_length=args.main_histrory_length,
-        frequency_penalty=0.2,
-    )
-
-    # main model のクライアントを作成
-    main_client = MainClient(model_config=main_model_config)
-
-    # slot model の設定
-    # 1 対話だけ見せる (assistant の解答も挟まるので n 対話見せる場合は 2n-1)
-    slot_model_config = ModelConfig(
-        model=args.slot_model, 
-        history_length=1,
-        max_tokens=32,
-    )
-
-    # slot model のクライアントを作成
-    slot_clients = {
-        slot: SlotContentClient(
-            model_config=slot_model_config,
-            slot=slot,
-            input_history_length=args.slot_input_histrory_length
-        ) 
-        for slot 
-        in Slot
-    }
-
-    
-    while True:
-        # ユーザの入力を受け取る
-        user_content = input("ユウキ: ")
-        # user_content = uttr
-
-        # メインモデルの応答時間の計測開始
-        start_time = time.time()
-
-        # ユーザが "q" あるいは "exit" と入力したらループを抜ける (DEBUG)
-        # if args.debug:
-        #     if user_content in ["exit", "q"]:
-        #         break
-
-        # ユーザの入力をメインモデルに渡す
-        main_client.add_user_input(user_content)
-
-        # メインモデルの応答を要求し、応答を出力する
-        debug_print(args, "メインモデルへのリクエスト開始")
-        if args.stream:
-            # main_client.request_and_print_assistant_response_stream()
-            # 追加
-            for sentence in main_client.request_and_print_assistant_response_stream():
-                yield sentence
-
-        else:
-            main_client.request_and_print_assistant_response()
-
-        # メインモデルの応答時間の計測終了
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-
-        # メインモデルの応答時間を出力する (DEBUG)
-        debug_print(args, f"elapsed_time: {elapsed_time:.2f} sec")
-
-        # スロットコンテンツモデルの応答時間の計測開始
-        start_time = time.time()
-
-        # スロットコンテンツモデルに渡す対話履歴を取得する
-        main_chat_history = main_client.chat_history
-
-        # スロットコンテンツモデルに渡す対話履歴を出力する (DEBUG)
-        # debug_print(args, f"main_chat_history: {main_chat_history}")
-
-        # メインモデルの対話履歴をスロットコンテンツモデルに渡す
-        for slot in Slot:
-            # スロットコンテンツモデルに最新の対話履歴を入力として渡す
-            slot_clients[slot].add_main_chat_history_as_user_input(
-                main_chat_history=main_chat_history,
-                enable_fewshot=args.enable_fewshot
-            )
-
-        # スロットコンテンツモデルの応答を要求する
-        debug_print(args, "スロットモデルへのリクエスト開始")
-        asyncio.run(
-            await_all(
-                [
-                    slot_client.request_assistant_response()
-                    for slot_client
-                    in slot_clients.values()
-                ]
-            )
-        )
-
-        # スロットコンテンツモデルの応答を受け取る
-        slot_contents = {
-            slot: slot_client.slot_content
-            for slot, slot_client
-            in slot_clients.items()
-        }
-
-        # スロットコンテンツモデルの応答時間の計測終了
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-
-        # スロットコンテンツモデルの応答時間を出力する (DEBUG)
-        debug_print(args, f"elapsed_time: {elapsed_time:.2f} sec")
-
-        # スロットコンテンツモデルの応答を出力する (DEBUG)
-        slot_contents_str = ", ".join([f"{slot.text}: {content}" for slot, content in slot_contents.items()])
-        debug_print(args, f"slot_contents: {{{slot_contents_str}}}")
-
-        # メインモデルの保持するスロットコンテンツを更新する
-        main_client.slot_contents = slot_contents
-
-# --stream の default をstreamモードにしたので、引数で指定する必要なし（指定するとむしろstreamモードじゃ無くなる）
+# --stream の default をstreamモードにしたので、引数で指定する必要なし（指定するとstreamモードでは無くなる）
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--main-model", type=str, default="gpt-3.5-turbo")  # とりあえず3.5に
-    parser.add_argument("--slot-model", type=str, default="gpt-3.5-turbo")  # とりあえず3.5に
+    parser.add_argument("--main-model", type=str, default="gpt-3.5-turbo")
+    parser.add_argument("--slot-model", type=str, default="gpt-3.5-turbo")
     parser.add_argument("--main-histrory-length", type=int, default=None)
     parser.add_argument("--slot-input-histrory-length", type=int, default=None)
     parser.add_argument("--debug", action="store_true")
@@ -231,21 +112,13 @@ def start_conversation(args):
 
     return main_client, slot_clients
 
-
-# 追加
 # シズカの応答生成
 def shizuka_response(args, main_client, slot_clients, uttr):
     # ユーザの入力を受け取る
-    # user_content = input("ユウキ: ")
     user_content = uttr
 
     # メインモデルの応答時間の計測開始
     start_time = time.time()
-
-    # ユーザが "q" あるいは "exit" と入力したらループを抜ける (DEBUG)
-    # if args.debug:
-    #     if user_content in ["exit", "q"]:
-    #         break
 
     # ユーザの入力をメインモデルに渡す
     main_client.add_user_input(user_content)
@@ -253,8 +126,6 @@ def shizuka_response(args, main_client, slot_clients, uttr):
     # メインモデルの応答を要求し、応答を出力する
     debug_print(args, "メインモデルへのリクエスト開始")
     if args.stream:
-        # main_client.request_and_print_assistant_response_stream()
-        # 追加
         for sentence in main_client.request_and_print_assistant_response_stream():
             yield sentence
 
@@ -316,9 +187,3 @@ def shizuka_response(args, main_client, slot_clients, uttr):
 
     # メインモデルの保持するスロットコンテンツを更新する
     main_client.slot_contents = slot_contents
-
-
-if __name__ == "__main__":
-    args = get_args()
-
-    main(args)

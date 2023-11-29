@@ -18,7 +18,7 @@ from dslclib import (
     STTRecognitionType,
 )
 
-from module import RobotBodyController, RobotExpressionController, CorrespondUserExpression, RobotSpeechController
+from avatar import RobotBodyController, RobotExpressionController, CorrespondUserExpression, RobotSpeechController
 
 # 感情を取り出すモジュール
 def extract_emotion_and_motion(sentence):

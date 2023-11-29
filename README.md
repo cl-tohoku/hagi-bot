@@ -6,16 +6,19 @@
 ## 配布リソースに関する説明
 本システムはマルチモーダル対話システムであり，アバターを動かすには運営から配布されたソフトウェアが必要となります．配布ソフトウェアを用いないコマンドラインでテキストベースの応答生成をするローカルモデルを追加で公開します．
 
-本コンペティションに提出したマルチモーダルモデルについては multimodal フォルダで公開します．
+本コンペティションに提出したマルチモーダルモデルについては [multimodal フォルダ](./multimodal/)で公開しています．
 
-テキストベースで応答生成するローカルモデルについては local フォルダで公開します．
+テキストベースで応答生成するローカルモデルについては [local フォルダ](./local/)で公開しています．
 
 ### 応答生成機構
 本システムでは対話状態をスロットフィリング形式で監視し，状況に応じてプロンプトを変更し続けることで，文脈を考慮した自然な議論の展開を可能にしています．
 応答生成とスロットフィリングには OpenAI 社が公開している GPT-4 を用いています．
 本システムを実行するには OpenAI API が必要です．OPENAI_API_KEY を自身の API キーに変更してください．
 
-#### OpanAI API キーの指定方法
+### プロンプト
+プロンプトに記述した内容は[こちら](./local/clients/prompts/system_instructions.py)で確認できます．
+
+### OpanAI API キーの指定方法
 1. ~/.zshrc で指定する場合
    ~/.zshrc に以下を記述してください．
    ```
@@ -28,14 +31,26 @@
    openai.api_key = "[自身のOpenAI API キー]"
    ```
 
-### プロンプト
-プロンプトに記述した内容は[こちら](./local/clients/prompts/system_instructions.py)で確認できます．
+## マルチモーダルモデルの実行方法
+環境構築に関しては[こちら](https://sites.google.com/view/dslc6/getting-started)を参考にしてください．
 
-## 利用方法
-### マルチモーダルモデルの実行方法
-[こちら](https://sites.google.com/view/dslc6/getting-started)を参考にしてください．
+対話システムに必要なすべてのソフトウェアを起動するために[multimodal フォルダ](./multimodal/)内の start.bat をダブルクリックしてください．
 
-### ローカルモデルの実行方法
+全てのソフトウェアが起動し次第，以下の手順通りに実行してください
+
+```
+# リポジトリのクローン
+git clone https://github.com/cl-tohoku/hagi-bot.git
+cd multimodal/dslc6
+
+# docker イメージの作成
+docker build dslc6 -t dslc6
+
+# dockerコンテナの起動および対話システムの実行
+docker run --add-host="host.docker.internal:host-gateway" --rm -it dslc6
+```
+
+## ローカルモデルの実行方法
 実行環境
 - Python 3.10
 - openai == 0.28.1

@@ -1,7 +1,6 @@
 from dslclib import (
     SpeechRecognitionClient,
     Text2SpeechClient,
-    # FaceRecognitionClient,
     ExpressionController,
     BodyController,
     ExpressionType,
@@ -14,22 +13,21 @@ import asyncio
 from functools import partial
 import threading
 
-
 # GPT4で生成生成する関数を取得
-from chat_tohoku_v1 import main, get_args, start_conversation, shizuka_response
+from .src.gpt_response import get_args, start_conversation, shizuka_response
 
 # 使うモジュールを取得
-from utils import (
+from .src.utils import (
     extract_emotion_and_motion, take_time, is_period, is_exclamation, is_hatena, kanji_to_kana, is_safty_end, define_motion, is_santen, sentence_length_and_time, is_comma
 )
 # 使うモジュールを取得
-from module import RobotBodyController, RobotExpressionController, CorrespondUserExpression, RobotSpeechController
+from .src.avatar import RobotBodyController, RobotExpressionController, CorrespondUserExpression, RobotSpeechController
 
 
 SYSTEM_BYE_UTT = 'あ、ごめん、そろそろ時間だから帰らなきゃ。続きはまた話そう！ばいばい！'
 SYSTEM_RESET_UTT = 'システムをリセットしました。'
 SYSTEM_END_UTT = '対話の時間が終了しました。評価をお願いします。'
-MAX_NUM_QUEUE = 10000  # ここを大きくしたら解決？
+MAX_NUM_QUEUE = 10000
 
 class SampleModel():
     """SampleModel
@@ -48,7 +46,6 @@ class SampleModel():
     def __init__(self, ip: str | None = None) -> None:
         self.sr: SpeechRecognitionClient = SpeechRecognitionClient(ip=ip)
         self.tts: Text2SpeechClient = Text2SpeechClient(ip=ip)
-        # self.face: FaceRecognitionClient = FaceRecognitionClient(ip=ip)
         self.express: ExpressionController = ExpressionController(ip=ip)
         self.body: BodyController = BodyController(ip=ip)
         pass
@@ -56,7 +53,6 @@ class SampleModel():
     def close(self) -> None:
         self.sr.close()
         self.tts.close()
-        # self.face.close()
         self.express.close()
         self.body.close()
         pass
@@ -76,7 +72,6 @@ class SampleModel():
     # 対話終了直前のセリフ
     def end_speech(self):
         print(f"システム : {SYSTEM_BYE_UTT}")
-        # ここに動きを入れたい
         self.tts.speech("あ、ごめん", speed=130, pitch=115, wait_queue=True, max_num_queue=MAX_NUM_QUEUE)
         self.pause(1)
         self.tts.speech("そろそろ時間だから帰らなきゃ", speed=130, pitch=115, wait_queue=True, max_num_queue=MAX_NUM_QUEUE)
@@ -92,11 +87,6 @@ class SampleModel():
         self.body.play_motion("right_hand_byebye")
         time.sleep(3)
         self.body.play_motion(MotionType.RightHandBasePosition)
-
-    # def threading_motion(self, sentence="", gptemotion="", gptmotion=""):
-    #     time.sleep(sentence_length_and_time(sentence))
-    #     # ここで robotbodycontoller を渡せば解決する？
-    #     define_motion(robotbodycontoller, sentence, gptemotion, gptmotion)
 
     def start(self) -> None:
         args = get_args()
@@ -172,9 +162,6 @@ class SampleModel():
                     else:
                         main_client.add_user_input(uttr) # 対話履歴に追加
                         print(f"ユウキ : {uttr}")
-                    
-                    # if cond == STTRecognitionType.InterimResult:  # 発話途中ならば
-                    #     continue
 
                 # 「システムリセット」するとき
                 else:
@@ -182,9 +169,6 @@ class SampleModel():
                     cond = output.type  # ユーザが発話常態かどうか
                     uttr = output.result
                     print(f"ユウキ : {uttr}")
-                    
-                    # if cond == STTRecognitionType.InterimResult:  # 発話途中ならば
-                    #     continue
                     
                 # システムリセットの実装
                 if "システムリセット" in uttr or "システムリセット" in uttr_merge:
@@ -276,15 +260,10 @@ class SampleModel():
                         elif is_santen(sentence):
                             time_stop = 3
 
-                            # ここに悩む動作を入れても良さそう
-                            # スピードを下げる
-                            # ピッチ低め
-
                         else:
                             time_stop = 0
                         
                         # ここで抽出した感情や動作によってシズカの挙動を決める
-                        # express, speech_param, motion, main_sentence = extract_emotion_and_motion(sentence)  # 文中の感情を抽出
                         express, motion, main_sentence = extract_emotion_and_motion(sentence)  # 文中の感情を抽出
                         
                         # 感情が切り替わるタイミングではさらに間を差し込む

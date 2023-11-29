@@ -180,7 +180,6 @@ def get_args():
             warn_print(args, f"現在登録されている few-shot の対話文は {counts_str} の計{count_sum}件です。")
         else:
             warn_print(args, "few-shot prompt を有効にするには `--enable-fewshot` を指定してください。")
-        
 
     return args
 
