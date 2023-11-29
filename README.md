@@ -31,7 +31,16 @@
    openai.api_key = "[自身のOpenAI API キー]"
    ```
 
-## マルチモーダルモデルの実行方法
+## マルチモーダルモデル
+本コンペティションに提出したマルチモーダル対話システムです．
+
+配布されたソフトウェアが必要なので，参加者以外は実行できない可能性があります．実行する場合は[ローカルモデル](#ローカルモデル)を参考にしてください．
+
+システム全体は[multimodal フォルダ](./multimodal/)で公開しています．
+
+マルチモーダルモデル本体については[hagi_botフォルダ](./multimodal/dslc6/hagi_bot/)以降にスクリプトがあります．
+
+### 実行方法
 環境構築に関しては[こちら](https://sites.google.com/view/dslc6/getting-started)を参考にしてください．
 
 対話システムに必要なすべてのソフトウェアを起動するために[multimodal フォルダ](./multimodal/)内の start.bat をダブルクリックしてください．
@@ -50,7 +59,10 @@ docker build dslc6 -t dslc6
 docker run --add-host="host.docker.internal:host-gateway" --rm -it dslc6
 ```
 
-## ローカルモデルの実行方法
+## ローカルモデル
+配布されたソフトウェアを用いずにローカル環境で実行する，コマンドライン対話システムです．
+
+### 実行方法
 実行環境
 - Python 3.10
 - openai == 0.28.1
