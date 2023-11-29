@@ -1,0 +1,33 @@
+FROM nvidia/cuda:12.1.1-base-ubuntu22.04
+
+USER root
+RUN apt-get update && apt install -y sudo
+RUN echo "root:root" | chpasswd && \
+    adduser --disabled-password --gecos "" "ubuntu" && \
+    echo "ubuntu:ubuntu" | chpasswd && \
+    echo "%ubuntu    ALL=(ALL)   NOPASSWD:    ALL" >> /etc/sudoers.d/ubuntu && \
+    chmod 0440 /etc/sudoers.d/ubuntu
+RUN apt-get update && \
+    apt-get install -y curl wget git vim python3-pip 
+
+USER ubuntu
+WORKDIR /home/ubuntu
+RUN pip install -U pip
+RUN pip install torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu118
+RUN pip install openai
+RUN pip install tiktoken
+RUN pip install timeout-decorator
+
+COPY setup.sh /home/ubuntu/setup.sh
+RUN sudo pip install dslclib
+
+COPY sample.py /home/ubuntu/sample.py
+COPY first_model /home/ubuntu/first_model
+COPY mix_model /home/ubuntu/mix_model
+COPY dev /home/ubuntu/dev
+
+ENV OPENAI_API_KEY="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"
+ENV PYTHONPATH="/home/ubuntu/mix_model"
+ENV PYTHONPATH="/home/ubuntu/mix_model/clients/models"
+
+CMD [ "bash", "/home/ubuntu/setup.sh" ]

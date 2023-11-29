@@ -1,0 +1,8 @@
+{
+  "id": "nod_deep",
+  "priority": 1,
+  "motionIDList": [
+    "nod_deep_eye",
+    "nod_deep_head"
+  ]
+}

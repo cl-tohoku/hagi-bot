@@ -1,0 +1,99 @@
+{
+  "id": "right_hand_wait_human_light",
+  "priority": 0,
+  "isRelative": false,
+  "motionPartName": "RightHandController",
+  "motionPart": {
+    "instanceID": 13144
+  },
+  "thoughSafetyStopoverPoint": true,
+  "motionData": [
+    {
+      "id": "right_hand_wait_human_light",
+      "motionTowardObject": "HeadController",
+      "targetMotionMode": 1,
+      "targetPoint": {
+        "x": 0.10000000149011612,
+        "y": 0,
+        "z": 0.30000001192092896
+      },
+      "translateSpeed": -1,
+      "translateTime": 700,
+      "translateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 2,
+            "outSlope": 2,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "targetRotation": {
+        "x": 4,
+        "y": -96,
+        "z": 170
+      },
+      "rotateSpeed": -1,
+      "rotateTime": 700,
+      "rotateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 2,
+            "outSlope": 2,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "keepTime": 0,
+      "mode": 0,
+      "gazeTracking": true,
+      "priority": 0,
+      "isBezierCurvePoint": false,
+      "fingerData": [],
+      "beatOff": [],
+      "tracking": false
+    }
+  ]
+}

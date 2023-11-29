@@ -1,0 +1,23 @@
+{
+  "VisemesStreamer": {
+    "port": 31000
+  },
+  "Visual": {
+    "showhuman": true
+  },
+  "ProsodyExtractor": {
+    "PitchMaxRange": 600,
+    "PitchMinRange":60,
+    "PowerThreshold":5,
+    "minimalBeatInterval":1500,
+    "updateParamPowerAV":0.55,
+    "updateParamPowerSD":0.1,
+    "buffMsecForWorld":500,
+    "worldInterval":50
+  },
+  "ProsodyDataManager": {
+    "PitchTimeStampOffset": 50,
+    "PowerTimeStampOffset":0,
+    "VisemeTimeStampOffset":0
+  }
+}

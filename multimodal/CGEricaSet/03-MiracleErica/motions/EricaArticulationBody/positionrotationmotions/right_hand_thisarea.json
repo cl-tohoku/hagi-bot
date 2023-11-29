@@ -1,0 +1,1020 @@
+{
+  "id": "right_hand_thisarea",
+  "priority": 0,
+  "motionPartName": "RightHandController",
+  "motionPart": {
+    "instanceID": 48604
+  },
+  "thoughSafetyStopoverPoint": false,
+  "motionData": [
+    {
+      "id": "right_hand_thisarea",
+      "priority": 0,
+      "mode": 1,
+      "targetPoint": {
+        "x": 0.11820696294307709,
+        "y": -0.5581089854240417,
+        "z": 0.992372989654541
+      },
+      "translateSpeed": -1,
+      "translateTime": 500,
+      "translateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 2,
+            "outSlope": 2,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "targetRotation": {
+        "x": -70.72036743164062,
+        "y": -147.95387268066406,
+        "z": 80.55975341796875
+      },
+      "rotateSpeed": -1,
+      "rotateTime": 500,
+      "rotateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 2,
+            "outSlope": 2,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "keepTime": 0,
+      "tracking": false,
+      "isBezierCurvePoint": true,
+      "isGesture": true,
+      "options": "{}",
+      "fingerData": [
+        {
+          "motionPartName": "RightFingers",
+          "targetAngle": 68.69999694824219,
+          "springValue": 5
+        },
+        {
+          "motionPartName": "RightIndexFinger",
+          "targetAngle": 63.900001525878906,
+          "springValue": 5
+        }
+      ],
+      "beatOff": [],
+      "permitEmotionalRollChange": true,
+      "motionTowardObject": "Spine",
+      "targetMotionMode": 2,
+      "gazeTracking": true,
+      "canInsertBeat": false,
+      "targetPointOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "targetRotationOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "id": "right_hand_thisarea",
+      "priority": 0,
+      "mode": 1,
+      "targetPoint": {
+        "x": 0.19859309494495392,
+        "y": 0.45813265442848206,
+        "z": 1.5750188827514648
+      },
+      "translateSpeed": -1,
+      "translateTime": 1000,
+      "translateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 2,
+            "outSlope": 2,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "targetRotation": {
+        "x": 45.80213928222656,
+        "y": -91.05892944335938,
+        "z": -159.98471069335938
+      },
+      "rotateSpeed": -1,
+      "rotateTime": 1000,
+      "rotateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 2,
+            "outSlope": 2,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "keepTime": 0,
+      "tracking": false,
+      "isBezierCurvePoint": true,
+      "isGesture": true,
+      "options": "{}",
+      "fingerData": [
+        {
+          "motionPartName": "RightFingers",
+          "targetAngle": 65.5999984741211,
+          "springValue": 5
+        },
+        {
+          "motionPartName": "RightIndexFinger",
+          "targetAngle": 65.80000305175781,
+          "springValue": 5
+        }
+      ],
+      "beatOff": [],
+      "permitEmotionalRollChange": true,
+      "motionTowardObject": "Spine",
+      "targetMotionMode": 2,
+      "gazeTracking": true,
+      "canInsertBeat": false,
+      "targetPointOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "targetRotationOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "id": "right_hand_thisarea",
+      "priority": 0,
+      "mode": 1,
+      "targetPoint": {
+        "x": 0.6740668416023254,
+        "y": 0.27635711431503296,
+        "z": 1.8023593425750732
+      },
+      "translateSpeed": -1,
+      "translateTime": 1000,
+      "translateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "targetRotation": {
+        "x": -10.569061279296875,
+        "y": -77.0565185546875,
+        "z": 151.04751586914062
+      },
+      "rotateSpeed": -1,
+      "rotateTime": 1000,
+      "rotateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "keepTime": 0,
+      "tracking": false,
+      "isBezierCurvePoint": false,
+      "isGesture": true,
+      "options": "{}",
+      "fingerData": [
+        {
+          "motionPartName": "RightFingers",
+          "targetAngle": 5.699999809265137,
+          "springValue": 5
+        },
+        {
+          "motionPartName": "RightIndexFinger",
+          "targetAngle": 5.099999904632568,
+          "springValue": 5
+        }
+      ],
+      "beatOff": [],
+      "permitEmotionalRollChange": true,
+      "motionTowardObject": "Spine",
+      "targetMotionMode": 2,
+      "gazeTracking": true,
+      "canInsertBeat": false,
+      "targetPointOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "targetRotationOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "id": "right_hand_thisarea",
+      "priority": 0,
+      "mode": 1,
+      "targetPoint": {
+        "x": 1.5429909229278564,
+        "y": 1.340233564376831,
+        "z": 1.7562665939331055
+      },
+      "translateSpeed": -1,
+      "translateTime": 2000,
+      "translateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "targetRotation": {
+        "x": -11.084564208984375,
+        "y": -77.46435546875,
+        "z": 152.42413330078125
+      },
+      "rotateSpeed": -1,
+      "rotateTime": 2000,
+      "rotateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "keepTime": 0,
+      "tracking": false,
+      "isBezierCurvePoint": true,
+      "isGesture": true,
+      "options": "{}",
+      "fingerData": [
+        {
+          "motionPartName": "RightFingers",
+          "targetAngle": 5.699999809265137,
+          "springValue": 5
+        },
+        {
+          "motionPartName": "RightIndexFinger",
+          "targetAngle": 5.099999904632568,
+          "springValue": 5
+        }
+      ],
+      "beatOff": [],
+      "permitEmotionalRollChange": true,
+      "motionTowardObject": "Spine",
+      "targetMotionMode": 2,
+      "gazeTracking": true,
+      "canInsertBeat": false,
+      "targetPointOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "targetRotationOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "id": "right_hand_thisarea",
+      "priority": 0,
+      "mode": 1,
+      "targetPoint": {
+        "x": 1.5371630191802979,
+        "y": -0.4,
+        "z": 1.8059380054473877
+      },
+      "translateSpeed": -1,
+      "translateTime": 2000,
+      "translateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "targetRotation": {
+        "x": -59.773406982421875,
+        "y": 97.63540649414062,
+        "z": -78.1475830078125
+      },
+      "rotateSpeed": -1,
+      "rotateTime": 2000,
+      "rotateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "keepTime": 0,
+      "tracking": false,
+      "isBezierCurvePoint": true,
+      "isGesture": true,
+      "options": "{}",
+      "fingerData": [
+        {
+          "motionPartName": "RightFingers",
+          "targetAngle": 5.699999809265137,
+          "springValue": 5
+        },
+        {
+          "motionPartName": "RightIndexFinger",
+          "targetAngle": 5.099999904632568,
+          "springValue": 5
+        }
+      ],
+      "beatOff": [],
+      "permitEmotionalRollChange": true,
+      "motionTowardObject": "Spine",
+      "targetMotionMode": 2,
+      "gazeTracking": true,
+      "canInsertBeat": false,
+      "targetPointOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "targetRotationOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "id": "right_hand_thisarea",
+      "priority": 0,
+      "mode": 1,
+      "targetPoint": {
+        "x": 0.00038906148984096944,
+        "y": -0.4,
+        "z": 1.7952606678009033
+      },
+      "translateSpeed": -1,
+      "translateTime": 2000,
+      "translateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "targetRotation": {
+        "x": 34.09668731689453,
+        "y": 89.39584350585938,
+        "z": -73.06326293945312
+      },
+      "rotateSpeed": -1,
+      "rotateTime": 2000,
+      "rotateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "keepTime": 0,
+      "tracking": false,
+      "isBezierCurvePoint": false,
+      "isGesture": true,
+      "options": "{}",
+      "fingerData": [
+        {
+          "motionPartName": "RightFingers",
+          "targetAngle": 5.699999809265137,
+          "springValue": 5
+        },
+        {
+          "motionPartName": "RightIndexFinger",
+          "targetAngle": 5.099999904632568,
+          "springValue": 5
+        }
+      ],
+      "beatOff": [],
+      "permitEmotionalRollChange": true,
+      "motionTowardObject": "Spine",
+      "targetMotionMode": 2,
+      "gazeTracking": true,
+      "canInsertBeat": false,
+      "targetPointOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "targetRotationOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "id": "right_hand_thisarea",
+      "priority": 0,
+      "mode": 1,
+      "targetPoint": {
+        "x": 0.11769893020391464,
+        "y": 0.2947709262371063,
+        "z": 1.8007166385650635
+      },
+      "translateSpeed": -1,
+      "translateTime": 2000,
+      "translateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "targetRotation": {
+        "x": -31.441436767578125,
+        "y": 93.24669647216797,
+        "z": -171.3482208251953
+      },
+      "rotateSpeed": -1,
+      "rotateTime": 2000,
+      "rotateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "keepTime": 0,
+      "tracking": false,
+      "isBezierCurvePoint": true,
+      "isGesture": true,
+      "options": "{}",
+      "fingerData": [
+        {
+          "motionPartName": "RightFingers",
+          "targetAngle": 71.5,
+          "springValue": 5
+        },
+        {
+          "motionPartName": "RightIndexFinger",
+          "targetAngle": 71.4000015258789,
+          "springValue": 5
+        }
+      ],
+      "beatOff": [],
+      "permitEmotionalRollChange": true,
+      "motionTowardObject": "Spine",
+      "targetMotionMode": 2,
+      "gazeTracking": true,
+      "canInsertBeat": false,
+      "targetPointOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "targetRotationOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "id": "right_hand_thisarea",
+      "priority": 0,
+      "mode": 1,
+      "targetPoint": {
+        "x": 0.17156368494033813,
+        "y": 0.9412484169006348,
+        "z": 1.756147861480713
+      },
+      "translateSpeed": -1,
+      "translateTime": 2000,
+      "translateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "targetRotation": {
+        "x": 16.588722229003906,
+        "y": -109.54341125488281,
+        "z": 153.53163146972656
+      },
+      "rotateSpeed": -1,
+      "rotateTime": 2000,
+      "rotateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "keepTime": 0,
+      "tracking": false,
+      "isBezierCurvePoint": true,
+      "isGesture": true,
+      "options": "{}",
+      "fingerData": [
+        {
+          "motionPartName": "RightFingers",
+          "targetAngle": 5.699999809265137,
+          "springValue": 5
+        },
+        {
+          "motionPartName": "RightIndexFinger",
+          "targetAngle": 5.099999904632568,
+          "springValue": 5
+        }
+      ],
+      "beatOff": [],
+      "permitEmotionalRollChange": true,
+      "motionTowardObject": "Spine",
+      "targetMotionMode": 2,
+      "gazeTracking": true,
+      "canInsertBeat": false,
+      "targetPointOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "targetRotationOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "id": "right_hand_thisarea",
+      "priority": 0,
+      "mode": 1,
+      "targetPoint": {
+        "x": 0.6740668416023254,
+        "y": 0.27635711431503296,
+        "z": 1.8023593425750732
+      },
+      "translateSpeed": -1,
+      "translateTime": 2000,
+      "translateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "targetRotation": {
+        "x": -10.569061279296875,
+        "y": -77.0565185546875,
+        "z": 151.04751586914062
+      },
+      "rotateSpeed": -1,
+      "rotateTime": 2000,
+      "rotateCurve": {
+        "serializedVersion": "2",
+        "m_Curve": [
+          {
+            "serializedVersion": "3",
+            "time": 0,
+            "value": 0,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          },
+          {
+            "serializedVersion": "3",
+            "time": 1,
+            "value": 1,
+            "inSlope": 0,
+            "outSlope": 0,
+            "tangentMode": 0,
+            "weightedMode": 0,
+            "inWeight": 0,
+            "outWeight": 0
+          }
+        ],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+      },
+      "keepTime": 0,
+      "tracking": false,
+      "isBezierCurvePoint": false,
+      "isGesture": true,
+      "options": "{}",
+      "fingerData": [
+        {
+          "motionPartName": "RightFingers",
+          "targetAngle": 5.699999809265137,
+          "springValue": 5
+        },
+        {
+          "motionPartName": "RightIndexFinger",
+          "targetAngle": 5.099999904632568,
+          "springValue": 5
+        }
+      ],
+      "beatOff": [],
+      "permitEmotionalRollChange": true,
+      "motionTowardObject": "Spine",
+      "targetMotionMode": 2,
+      "gazeTracking": true,
+      "canInsertBeat": false,
+      "targetPointOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "targetRotationOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  ],
+  "motionHandData": []
+}

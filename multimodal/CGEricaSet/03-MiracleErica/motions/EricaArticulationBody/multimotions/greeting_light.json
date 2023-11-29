@@ -1,0 +1,9 @@
+{
+  "id": "greeting_light",
+  "priority": 1,
+  "motionIDList": [
+    "greeting_light_head",
+    "greeting_light_neck",
+    "greeting_light_spine"
+  ]
+}

@@ -1,0 +1,1 @@
+explorer %USERPROFILE%\AppData\LocalLow\ATR\MiracleHuman

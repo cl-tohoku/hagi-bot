@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<setting>
+  <DataServerPort>2345</DataServerPort>
+  <PlayerServerPort>3456</PlayerServerPort>
+ <Polly>
+  	<speaker>Mizuki</speaker>
+  	<!--(%), 50~100~200-->
+  	<pitch>100</pitch>
+  	<!--(%), 50~100~200-->
+  	<speed>100</speed>
+  	<!--(%), 50~100~200-->
+  	<volume>100</volume>
+  	<!--声道の長さ(%), 50~0~100-->
+  	<vocal-tract-length>0</vocal-tract-length>
+  	<duration-information>false</duration-information>
+  	<speechmark>false</speechmark>
+  </Polly>
+ </setting>

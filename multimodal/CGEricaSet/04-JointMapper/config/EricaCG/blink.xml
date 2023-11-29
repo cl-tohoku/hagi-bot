@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	<axis num> is axis number
+	<blink_value> is axis blinked value 0~255(Absolute)
+-->
+
+<robot>
+	<blink id="upper" keep="300" w="0.6">
+		<axis num="1">
+			<blink_value>200</blink_value>
+		</axis>
+	</blink>
+	<blink id="all" keep="300" w="0.4">
+		<axis num="1">
+			<blink_value>200</blink_value>
+		</axis>
+		<axis num="5">
+			<blink_value>240</blink_value>
+		</axis>
+	</blink>
+</robot>
+

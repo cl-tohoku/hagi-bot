@@ -1,0 +1,10 @@
+{
+  "id": "greeting_deep",
+  "priority": 1,
+  "motionIDList": [
+    "greeting_deep_eye",
+    "greeting_deep_head",
+    "greeting_deep_neck",
+    "greeting_deep_spine"
+  ]
+}

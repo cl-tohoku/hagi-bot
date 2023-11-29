@@ -1,0 +1,51 @@
+！注意！'='の間にスペースを入れてはならない
+<通信方式>
+本アプリがTCPサーバ（ port : 21000）で非同期通信を行う
+コマンドのフッターは改行コード
+文字コードはutf-8
+
+<送信コマンド>
+[x,y,zで視線，顔，体を向ける座標を指定する]
+ロボットの正面方向がz軸，右がx軸，上がy軸の左手座標系でロボットの腰の下が原点，単位はメートル，translateSpeed(移動速度)は[m/sec]
+EyeController={"id": "EyeController","motionTowardObject": "","targetMotionMode": 2,"targetPoint": {"x": 0.0,"y": 1.2,"z": 1.5},"translateSpeed": 2.0}\n
+HeadController={"id": "HeadController","motionTowardObject": "","targetMotionMode": 2,"targetPoint": {"x": 0.0,"y": 1.2,"z": 1.5},"translateSpeed": 2.0}\n
+BodyController={"id": "BodyController","motionTowardObject": "","targetMotionMode": 2,"targetPoint": {"x": 0.0,"y": 1.2,"z": 1.5},"translateSpeed": 2.0}\n
+
+[顔，体を向ける度合いを指定する(対象からそらす：-1.0~+1.0：対象に向ける)]
+BodyController={"attractiveness":0.5}\n
+HeadController={"attractiveness":-0.5}\n
+
+[視線を顔を向けている方向から逸らす，float scale is degree, change automatically EyeController position, pitch_degree > 0 downward, <0 upward]
+gazeavert={"pitch_degree":10.0, "yaw_degree":10.0, "speed":2.0}\n
+
+[定義されたジェスチャをする，使えるジェスチャはUIの左のリストを参照]
+playmotion=motionID\n
+
+[マニュアルで首傾げ姿勢を変える，これを送れば自動で姿勢を変えるモジュール（Emotion2Pose）は止まる]
+左右に傾げ腰と首を同一方向か逆方向か指定できる
+rollpose={"degree":float, "direction":"left/right", "samedirection":true/false}\n
+rollpose={"degree":5.0, "direction":"left", "samedirection":true}
+[自動で姿勢を変えるモジュール（Emotion2Pose）を再開・停止]
+modulecontrol={"moduleName":"Emotion2Pose", "permit": true/false}\n
+
+[内部状態を変える(-1.0~+1.0)]
+arousal=float\n
+valence=float\n
+
+
+<受信コマンド>
+値が変わったときのみデータが送られてくる
+[Kinectの情報と組み合わせたときのみ]
+ [ユーザの視線情報]
+　ロボットに対しての視線情報
+　　HumanLookingTowardRobot={\"x\":" +float+",\"y\":" + float + ",\"z\":" + float+ ",\"layer2_x\":" + float + ",\"layer2_y\":" + float + ",\"layer2_z\":" + float+ "}\n");
+　　HumanNotLookingTowardRobot
+　その他ものに対しての視線情報
+　　HumanLookingTowardObject={\"x\":" + float + ",\"y\":" + float + ",\"z\":" + float + ",\"layer2_x\":" + float + ",\"layer2_y\":" + float + ",\"layer2_z\":" + float + ",\"objectname\":" + "\""+string+ "\"" + "}\n"
+　　HumanNotLookingTowardObject
+　ロボットユーザの視線状態
+　　EyeContactState=MUTUALGAZE/ROBOTLOOKSHUMAN/HUMANLOOKSROBOT/NONE
+ [ユーザの動きに基づく危険状態検出]
+　mainユーザが顔や手を近づけてきた状態
+　　DangerousState=HUMANHEAD2ROBOTHEAD/HUMANRIGHTHAND2ROBOTHEAD/HUMANLEFTHAND2ROBOTHEAD/HUMANRIGHTHAND2ROBOTRIGHTHAND/HUMANRIGHTHAND2ROBOTLEFTHAND/HUMANLEFTHAND2ROBOTRIGHTHAND/HUMANLEFTHAND2ROBOTLEFTHAND/NONE 
+　

@@ -1,0 +1,8 @@
+{
+  "id": "both_hand_strechouthand2handgesturetarget",
+  "priority": 1,
+  "motionIDList": [
+    "both_right_hand_strechouthand2handgesturetarget",
+    "both_left_hand_strechouthand2handgesturetarget"
+  ]
+}

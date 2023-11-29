@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<setting>
+  <mosIP>localhost</mosIP>
+  <mosPort>12000</mosPort>
+  <mosPotPort>15000</mosPotPort>
+  <miracleIP>localhost</miracleIP>
+  <miraclePort>9100</miraclePort>
+  <serverPort>20000</serverPort>
+  <useOculusLip>true</useOculusLip>
+  <oculusLipIP>localhost</oculusLipIP>
+  <oculusLipPort>31000</oculusLipPort>
+  <axisoffset>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</axisoffset>
+  <init>40,120,0,128,0,0,0,0,0,0,0,0,0,128,128,120,128,128,120,140,0,64,32,40,100,135,210,250,250,0,0,0,0,128,100,20,50,150,180,250,250,0,0,0,0,0</init>
+  <defaultArousal>0.1</defaultArousal>
+  <defaultValence>0.2</defaultValence>
+  <defaultDominance>0.0</defaultDominance>
+  <blinkInterval>6000</blinkInterval>
+</setting>

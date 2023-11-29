@@ -1,0 +1,68 @@
+<概要>
+Amazon Pollyのラッパー
+https://aws.amazon.com/jp/polly/
+上記のサイトにてユーザ登録を行いIAMユーザのPollyのアクセス権限を与えた後
+%USERPROFILE%\.aws\credentialsファイルを作成し取得したアクセスIDとシークレットキーを以下のように記述する
+[default]
+aws_access_key_id = ***
+aws_secret_access_key = ***
+
+docs\OpenCredentialsDirectory.batを叩けばそのディレクトリを開いてくれる
+
+本アプリがTCPサーバとなり，音声信号の配信または再生を行う
+通信方式は同期通信
+文字コードはutf-8
+フッターは改行コード
+
+mp3を取得する場合も再生する場合も音声を作る送信プロトコルは同じである
+
+<mp3を取得するサーバとのプトロコル>
+port: 2345
+（送信）再生コマンド→（受信）{"result":"success","voice_data":"byte配列をbase64エンコード"}
+または　（送信）再生コマンド→（受信）{"result":"failed"}
+
+<音声を再生するサーバとのプトロコル>
+port:3456
+（送信）再生コマンド→（受信）{"result":"success-start","duration":12491} →（受信） {"result":"success-end"}
+durationオプションを加えないとdurationは-1になる
+またspeechmarkオプリョンをtrueにするとword単位とviseme単位の発話はじめからの時間が情報がJsonArray形式で追加される
+{"result":"success-start","duration":1303,"speechmarks":[{"time":6,"type":"word","start":53,"end":62,"value":"テスト"},{"time":6,"type":"viseme","value":"t"},{"time":75,"type":"viseme","value":"@"},{"time":158,"type":"viseme","value":"s"},{"time":228,"type":"viseme","value":"i"},{"time":284,"type":"viseme","value":"t"},{"time":344,"type":"viseme","value":"o"},{"time":389,"type":"word","start":62,"end":71,"value":"テスト"},{"time":389,"type":"viseme","value":"t"},{"time":446,"type":"viseme","value":"@"},{"time":520,"type":"viseme","value":"s"},{"time":598,"type":"viseme","value":"i"},{"time":658,"type":"viseme","value":"t"},{"time":712,"type":"viseme","value":"o"},{"time":811,"type":"word","start":71,"end":80,"value":"テスト"},{"time":811,"type":"viseme","value":"t"},{"time":879,"type":"viseme","value":"@"},{"time":970,"type":"viseme","value":"s"},{"time":1028,"type":"viseme","value":"i"},{"time":1109,"type":"viseme","value":"t"},{"time":1178,"type":"viseme","value":"o"},{"time":1303,"type":"viseme","value":"sil"}]}
+
+または　（送信）再生コマンド→（受信）{"result":"failed"}
+durationの単位はmsecで再生終わりのタイミングでフラグが送られてくる
+
+再生中に再生を停止させるコマンド
+（送信）{"engine":"STOP"} →（受信）{"result":"success-end"}
+
+現在音声を再生中か確認するコマンド
+（送信）{"engine":"ISSPEAKING"} →（受信）{"isSpeaking":true/false}
+
+
+
+<音声合成・再生コマンド>
+すべてJSON形式
+
+[シンプルテキスト]
+パラメータ
+speaker:Mizuki, Takumi
+pitch:50~100~200
+speed:50~100~400
+volume:50~100~200
+vocal-tract-length:50~0~100
+duration-information:true/false
+speechmark:true/false
+※pitch, speed, volumeはDocomoTTSと互換性を持たせるために基準を100にしている
+
+コマンドサンプル
+{"engine":"POLLY", "speaker": "Mizuki",  "pitch": 100, "volume":100, "speed":100, "vocal-tract-length":0, "duration-information":false, "speechmark":false, "text":"テストテストテスト"}\n
+
+
+[ssml]
+speaker:Mizuki, Takumi
+duration-information:true/false
+speechmark:true/false
+コマンドサンプル
+{"engine":"POLLY-SSML", "speaker": "Mizuki",  "duration-information":false, "speechmark":false, "text":"<speak>こんにちは．私の名前は<prosody volume=\"loud\" pitch=\"high\" rate=\"slow\">翔子</prosody>です．</speak>"}\n
+
+SSMLの詳細オプション
+https://docs.aws.amazon.com/ja_jp/polly/latest/dg/supportedtags.html#prosody-tag

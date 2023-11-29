@@ -1,0 +1,197 @@
+{
+	"InitialPosition": {
+		"eyeHeight": 1.2000000476837158,
+		"waistX": 0,
+		"waistZ": 0,
+		"direction": 0,
+		"pitch": 0
+	},
+	"StateStreamer": {
+		"port": 9100
+	},
+	"RemoteController": {
+		"port": 21000
+	},
+	"EmotionalPose": {
+		"poseChangeInterval": 10000,
+		"poseChangeRatio": 0.800000011920929,
+		"maxArousal": 0.25,
+		"minPoseKeepDuration": 1000
+	},
+	"RightHandBeat": {
+		"voicePower2Force": 10,
+		"lipHeight2Force": 10,
+		"arousalScale": 0,
+		"valenceScale": 0
+	},
+	"LeftHandBeat": {
+		"voicePower2Force": 10,
+		"lipHeight2Force": 10,
+		"arousalScale": 0,
+		"valenceScale": 0
+	},
+	"HeadBeat": {
+		"voicePower2Force": 0.5,
+		"lipHeight2Force": 0.1,
+		"arousalScale": 1,
+		"valenceScale": 0.5
+	},
+	"MainCamera": {
+		"pos": {
+			"x": 0,
+			"y": 1.1699999570846558,
+			"z": 2.5
+		},
+		"rot": {
+			"x": 0,
+			"y": 180,
+			"z": 0
+		},
+		"isGlobal": true
+	},
+	"MotionOfBeat": {
+		"lefthandbeat": {
+			"partRotation": 60,
+			"wholeRotation": 20
+		},
+		"righthandbeat": {
+			"partRotation": 60,
+			"wholeRotation": 20
+		},
+		"lefthandprosodybeat": {
+			"partRotation": 60,
+			"wholeRotation": 20
+		},
+		"righthandprosodybeat": {
+			"partRotation": 60,
+			"wholeRotation": 20
+		}
+	},
+	"MotionOfHome": {
+		"righthandbaseposition": {
+			"pathPointHeight": 0.15000000596046448,
+			"translateSpeed": 0.3,
+			"rotateSpeed": 180
+		},
+		"lefthandbaseposition": {
+			"pathPointHeight": 0.15000000596046448,
+			"translateSpeed": 0.3,
+			"rotateSpeed": 180
+		}
+	},
+	"Layer2Client": {
+		"hostPort": 7003,
+		"hostName": "erica-dnn"
+	},
+	"RobotProsody": {
+		"hostPort": 31000,
+		"hostName": "localhost"
+	},
+	"RobotProsody2Head": {
+		"prosodyMotionDefaultProb": 0.75,
+		"arousalPowerScale": 0.5,
+		"valencePowerScale": 0,
+		"arousalFreqScale": 0.75,
+		"valenceFreqScale": 0,
+		"beatPower2Force": 0.5,
+		"beatPowerMaxDiff": 1,
+		"beatDuration": 80,
+		"beatIntervalDuration": 1500,
+		"fallDownSemitone2Force": 0.5,
+		"fallDownSemitoneMaxDiff": 1,
+		"riseUpSemitone2Force": -0.30000001192092896,
+		"riseUpSemitoneMaxDiff": -1,
+		"aa2Force": 0.40000000596046448,
+		"ih2Force": 0,
+		"ou2Force": 0,
+		"E2Force": 0.30000001192092896,
+		"oh2Force": 0,
+		"visemeDuration": 100,
+		"forceAddDuration": 100
+	},
+	"K2BodyMaker": {
+		"humanViewingAngle": 40,
+		"showViewingArea": false,
+		"humanViewingAlpha": 0.20000000298023224,
+		"humanPointingAngle": 15,
+		"humanPointingAlpha": 0.20000000298023224,
+		"showPointingArea": false,
+		"humanPointingKeepThreshold": 500,
+		"dangerousDistanceFromRobotHead": 0.25,
+		"dangerousTimeInRobotHead": 100,
+		"dangerousDistanceFromRobotHand": 0.20000000298023224,
+		"dangerousTimeInRobotHand": 200,
+		"distanceThresholdFromHand": 0.10000000149011612
+	},
+	"ATField": {
+		"showField": false,
+		"powerBalance": 0.800000011920929,
+		"fieldIntensity": 0.5,
+		"humanLookingTowardRobotThreshold": 1,
+		"smoothing": 0.10000000149011612
+	},
+	"RightHandHomePositions": [
+		{
+			"id": "right-side-rightknee",
+			"pos": {
+				"x": 0.29,
+				"y": 0.55,
+				"z": 0.22
+			},
+			"rot": {
+				"x": 40,
+				"y": 30,
+				"z": -40
+			},
+			"isGlobal": false,
+			"onObjectName": ""
+		},
+		{
+			"id": "right-on-rightknee",
+			"pos": {
+				"x": 0.10000000149011612,
+				"y": 0.62999999523162842,
+				"z": 0.30000001192092896
+			},
+			"rot": {
+				"x": 10,
+				"y": 0,
+				"z": 0
+			},
+			"isGlobal": false,
+			"onObjectName": ""
+		}
+	],
+	"LeftHandHomePositions": [
+		{
+			"id": "left-side-leftknee",
+			"pos": {
+				"x": -0.29,
+				"y": 0.55,
+				"z": 0.22
+			},
+			"rot": {
+				"x": 40,
+				"y": 30,
+				"z": 40
+			},
+			"isGlobal": false,
+			"onObjectName": ""
+		},
+		{
+			"id": "left-on-leftknee",
+			"pos": {
+				"x": -0.10000000149011612,
+				"y": 0.62999999523162842,
+				"z": 0.30000001192092896
+			},
+			"rot": {
+				"x": 10,
+				"y": 0,
+				"z": 0
+			},
+			"isGlobal": false,
+			"onObjectName": ""
+		}
+	]
+}

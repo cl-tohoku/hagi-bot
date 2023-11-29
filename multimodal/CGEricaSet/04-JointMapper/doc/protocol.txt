@@ -1,0 +1,41 @@
+<通信方式>
+本アプリがTCPサーバ（ port : 20000）で非同期通信を行う
+コマンドのフッターは改行コード
+文字コードはutf-8
+
+<送信コマンド>
+[内部状態を変更する，値の範囲は-1~+1]
+valence double\n
+arousal double\n
+dominance double\n
+realintention double\n
+
+[表情プリセットを選択する，プリセットはUIのプルダウン参照，MoodBasedFACSは内部状態に応じて適宜変わる表情セット]
+expression expressionname\n
+
+[FACSのActionUnitを制御]
+facs AUID(string) -1(double)~+1(double)\n
+もし複数同時に変えたい場合はAUID(string) value(double)の組み合わせをループ
+AUIDはInnerBrow, OuterBrow_Right, OuterBrow_Left, Cheek_Right, Cheek_Left, UpperLip, LowerLip, LipCorner_Right, LipCorner_Left, UpperLid_Right, UpperLid_Left, LowerLid_Right, LowerLid_Left, LipPart, JawDrop, MouthOpen, MouthCornerStickout
+例
+facs InnerBrow 1.0 Cheek 1.0
+_Left/_Rightを省略すると両方同じ値になる
+
+
+[瞬きさせる]
+blink\n
+
+[MotionOSにジェスチャファイルを再生させる，非推奨]
+setgesture gesturename\n
+
+[MOS, AASSに対するコネクションを制御]
+sendaxiscommand true/false\n
+
+<受信コマンド>
+[ロボットの発話状態を知らせる，（送信）needNotificationSpeechInfo true/false\nすることでストリーミングをOnOffできる，（デフォルトでfalse）]
+	notify::RobotSpeechEnd
+	notify::RobotSpeechPause
+	notify::RobotSpeechStart
+
+[setgestureコマンド後ジェスチャ終わりを知らせる，（送信）needNotificationMotionEnd true/false\nすることでストリーミングをOnOffできる，（デフォルトでtrue）]
+	OK:setgesture Dummybot_gesture_greeting.txt

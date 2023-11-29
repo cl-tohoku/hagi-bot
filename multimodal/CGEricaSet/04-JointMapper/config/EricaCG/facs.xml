@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  InnerBrow, OuterBrow, Cheek, UpperLip, LipCorner, UpperLid, LowerLid, LipPart, JawDrop, MouthOpen, MouthCornerStickout -->
+<sets>
+	<expression name="fullsmile" onsettime="100" offsettime="1000">
+		<facs id="InnerBrow">0.0</facs>
+		<facs id="OuterBrow">1.0</facs>
+		<facs id="Cheek">1.0</facs>
+		<facs id="UpperLip">0.0</facs>
+		<facs id="LipCorner">1.0</facs>
+		<facs id="UpperLid">0.3</facs>
+		<facs id="LowerLid">1.0</facs>
+		<facs id="LipPart">0.0</facs>
+		<facs id="JawDrop">0.0</facs>
+		<facs id="MouthOpen">0.0</facs>
+		<facs id="MouthCornerStickout">0.0</facs>		
+	</expression>
+	<expression name="bad" onsettime="100" offsettime="1000">
+		<facs id="InnerBrow">1.0</facs>
+		<facs id="OuterBrow">1.0</facs>
+		<facs id="Cheek">-1.0</facs>
+		<facs id="UpperLip">0.0</facs>
+		<facs id="LipCorner">-1.0</facs>
+		<facs id="UpperLid">0.3</facs>
+		<facs id="LowerLid">1.0</facs>
+		<facs id="LipPart">0.0</facs>
+		<facs id="JawDrop">0.0</facs>
+		<facs id="MouthOpen">0.0</facs>
+		<facs id="MouthCornerStickout">0.0</facs>		
+	</expression>
+	<expression name="angry" onsettime="100" offsettime="1000">
+		<facs id="InnerBrow">-1.0</facs>
+		<facs id="OuterBrow">-1.0</facs>
+		<facs id="Cheek">0.0</facs>
+		<facs id="UpperLip">0.0</facs>
+		<facs id="LipCorner">-1.0</facs>
+		<facs id="UpperLid">-1.0</facs>
+		<facs id="LowerLid">-1.0</facs>
+		<facs id="LipPart">0.0</facs>
+		<facs id="JawDrop">0.0</facs>
+		<facs id="Cheek">-1.0</facs>
+		<facs id="MouthOpen">0.0</facs>
+		<facs id="MouthCornerStickout">-0.5</facs>		
+	</expression>
+	<expression name="slightsad" onsettime="500" offsettime="1000">
+		<facs id="InnerBrow">0.8</facs>
+		<facs id="OuterBrow">-0.5</facs>
+		<facs id="Cheek">0.6</facs>
+		<facs id="UpperLip">0.0</facs>
+		<facs id="LipCorner">0.1</facs>
+		<facs id="UpperLid">-0.6</facs>
+		<facs id="LowerLid">1.0</facs>
+		<facs id="LipPart">0.0</facs>
+		<facs id="JawDrop">0.0</facs>
+		<facs id="MouthOpen">0.1</facs>
+		<facs id="MouthCornerStickout">0.0</facs>		
+	</expression>
+	<expression name="eye-close" onsettime="700" offsettime="1000">
+		<facs id="InnerBrow">-1.0</facs>
+		<facs id="OuterBrow">-1.0</facs>
+		<facs id="UpperLid">-1.0</facs>
+		<facs id="LowerLid">1.0</facs>
+	</expression>
+	<expression name="eye-open" onsettime="50" offsettime="1000">
+		<facs id="InnerBrow">1.0</facs>
+		<facs id="OuterBrow">1.0</facs>
+		<facs id="UpperLid">1.0</facs>
+		<facs id="LowerLid">-1.0</facs>
+	</expression>
+	<expression name="eye-up" onsettime="50" offsettime="1000">
+		<facs id="InnerBrow">-1.0</facs>
+		<facs id="OuterBrow">1.0</facs>
+		<facs id="UpperLid">1.0</facs>
+		<facs id="LowerLid">1.0</facs>
+	</expression>
+	<expression name="eye-down" onsettime="50" offsettime="1000">
+		<facs id="InnerBrow">1.0</facs>
+		<facs id="OuterBrow">-1.0</facs>
+		<facs id="UpperLid">1.0</facs>
+		<facs id="LowerLid">1.0</facs>
+	</expression>
+	<expression name="mouth-a" onsettime="100" offsettime="100">
+		<facs id="MouthOpen">0.7</facs>
+		<facs id="MouthCornerStickout">0.0</facs>		
+	</expression>
+	<expression name="mouth-i" onsettime="100" offsettime="100">
+		<facs id="MouthOpen">0.1</facs>
+		<facs id="MouthCornerStickout">0.7</facs>		
+	</expression>
+	<expression name="mouth-u" onsettime="100" offsettime="100">
+		<facs id="MouthOpen">0.0</facs>
+		<facs id="MouthCornerStickout">-0.5</facs>		
+	</expression>
+	<expression name="mouth-e" onsettime="100" offsettime="100">
+		<facs id="MouthOpen">0.4</facs>
+		<facs id="MouthCornerStickout">0.5</facs>		
+	</expression>
+	<expression name="mouth-o" onsettime="100" offsettime="100">
+		<facs id="MouthOpen">0.4</facs>
+		<facs id="MouthCornerStickout">-0.3</facs>		
+	</expression>
+<!--
+	<expression name="sample" onsettime="100" offsettime="500">
+		<facs id="InnerBrow">0.0</facs>
+		<facs id="OuterBrow">0.0</facs>
+		<facs id="Cheek">0.0</facs>
+		<facs id="UpperLip">0.0</facs>
+		<facs id="LipCorner">0.0</facs>
+		<facs id="UpperLid">0.0</facs>
+		<facs id="LowerLid">0.0</facs>
+		<facs id="LipPart">0.0</facs>
+		<facs id="JawDrop">0.0</facs>
+		<facs id="MouthOpen">0.0</facs>
+		<facs id="MouthCornerStickout">0.0</facs>		
+	</expression>
+-->
+</sets>
+
