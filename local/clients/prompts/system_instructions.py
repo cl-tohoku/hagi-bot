@@ -77,16 +77,6 @@ main_instruction_template = """
 *悲しみ* 残念だけど、そうだね。 *期待* でも、次はきっとうまくいくよ！
 """.strip()
 
-
-slot_content_instruction_template = """
-user の入力として、ある会話の内容が渡されます。
-
-この会話について、「{slot}」という点に注意し、次のように簡潔に出力してください。
-- 「{slot}」がまだ決まっていない場合: None
-- 「{slot}」が決まった場合: 決まった内容
-""".strip()
-
-
 slot_content_instruction_template = """
 user の入力として、ある会話の内容が渡されます。
 
