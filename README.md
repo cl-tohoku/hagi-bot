@@ -90,7 +90,7 @@ python run.py --stream --main-model gpt-4 --slot-model gpt-4
 |debug|生成時間やスロットの確認|
 
 - stream
-  - 応答を一度に生成するか，区切り文字 (、。?!…) 毎に生成するかを指定します
+  - 全ての応答文を1度に生成するか，区切り文字 (、。?!…) 毎に生成するかを指定します
   - --stream 無：一度に生成
   - --stream 有：区切り文字毎に生成
 - main-model
