@@ -26,7 +26,6 @@ COPY first_model /home/ubuntu/first_model
 COPY mix_model /home/ubuntu/mix_model
 COPY dev /home/ubuntu/dev
 
-ENV OPENAI_API_KEY="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"
 ENV PYTHONPATH="/home/ubuntu/mix_model"
 ENV PYTHONPATH="/home/ubuntu/mix_model/clients/models"
 

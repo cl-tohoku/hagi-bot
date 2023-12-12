@@ -146,4 +146,3 @@ year={2023}
 
 ## 連絡先
 ご質問等ございましたら，nakano.yuto.t2@dc.tohoku.ac.jpまたはnozue.shinnosuke.q5@dc.tohoku.ac.jpへお問い合わせください．
-
