@@ -1,21 +1,19 @@
-# 対話システムライブコンペティションセットアップ
+# Dialogue System Live Competition Setup
 
-## 推奨環境環境
+## Recommended Environment
 
-### 一般開発者
+### General Developers
 
 - Windows 11
 - CUDA 12.1
 
-### SUNABA開発者
+### SUNABA Developers
 
 - Windows 11
 
+## Directory Structure Requirements
 
-## ディレクトリ構成の要件
-
-ダウンロードするソフトウェアは以下のような構成になるようにしてください。
-`start.bat`は以下の構成でなければ正しく動作しません。
+Please ensure the downloaded software follows the structure below. `start.bat` will not work correctly if this structure is not maintained.
 
 ```
 -- AmazonPollyServer/
@@ -42,207 +40,210 @@
 |- installer.bat
 |- README.md
 |- start.bat
+
 ```
 
+## Setup Procedure
 
-## セットアップ手順
+### Enabling WSL2 (**Not Mandatory**)
 
-### WSL2を有効化する (**必須ではありません**)
+Some may prefer development in UNIX-like environments.
 
-少なからずUNIX系での開発が好まれる方もいると思います。
+In such cases, you can enable WSL2 and develop in an Ubuntu environment using `wsl -d Ubuntu`.
 
-その場合はWSL2を有効化し、`wsl -d Ubuntu`のようにして、Ubuntu環境で開発することができます。
+There are also articles suggesting that GPU operations via WSL may be faster than on Windows. Those who wish to train models might benefit from using the distributed Docker container on WSL.
 
-また、こちらで検証はできていませんが、WSL経由のほうがWin上よりもGPUの動作が高速であるような記事も目にしていますので、
-モデルの学習を行いたい方は配布するdockerコンテナをWSL上に建てるなどして使うと良いかもしれません。
+[Reference Article](https://www.kagoya.jp/howto/cloud/container/wsl2_docker/)
 
-[参考記事](https://www.kagoya.jp/howto/cloud/container/wsl2_docker/)
+[Potential Pitfalls](https://zenn.dev/ohno/articles/1cb49d190af1f4)
 
-[はまりどころ](https://zenn.dev/ohno/articles/1cb49d190af1f4)
-
-**必ずWindows Powershellの管理者権限で行うこと！！**
+**Be sure to perform the following in Windows Powershell with administrator rights!!**
 
 ```bash
 $ wsl --set-default-version 2
 $ wsl --install
+
 ```
 
-Ubuntuのディストリビューションを使う場合は次のようにして起動できます。
+If using the Ubuntu distribution, you can start it as follows:
 
 ```bash
 $ wsl -d Ubuntu
-```
-
-### インストール
-
-今回セットアップ簡易化のため、`installer.bat`のバッチファイルを作成しています。
-
-`installer.bat`を使用する場合は、**コマンドプロンプト**で以下のようにコマンドを打ってください。（`$`は入力しないでください。）
 
 ```
-$ intaller.bat
+
+### Installation
+
+For simplified setup, a batch file `installer.bat` has been created.
+
+To use `installer.bat`, enter the following command in the **Command Prompt** (do not include the `$`):
+
+```
+$ installer.bat
+
 ```
 
-以下のセットアップを順番に行います。手動での作業を促すため、完全に自動化されたものではないことに注意してください。
-また、もともと開発者がインストールしているものとは競合を起こす可能性がありますので、以下インストールを促されるソフトウェアを見て、注意して扱ってください。
+The following setup steps will be performed in sequence. Note that this is not a fully automated process, and you may need to perform some steps manually.
+Also, be aware that the software to be installed may conflict with existing installations.
 
-※`installer.bat`では、インストール前に対象ソフトウェアがインストール済みであるかチェックをかけます。その際に見つかった場合はインストールの手続きは行われません。
+`installer.bat` will check if the target software is already installed before proceeding. If found, the installation process for that software will be skipped.
 
-インストールをするもの
+Software to be installed:
+
 1. Java
 2. Voicemeeter Banana
 3. Python3.10.11
 4. Docker for Windows
 
-`installer.bat`を用いない場合、対話システムライブコンペティション5にて記載された手順を参考にセットアップを進めてください。
+If you choose not to use `installer.bat`, please follow the setup steps outlined in the Dialogue System Live Competition 5 website.
 
-## 起動方法 (サンプルコードを動かす方法)
+## How to Start (Running Sample Code)
 
-`start.bat`をたたくと、必要なアプリがすべて順番に起動します。
+Running `start.bat` will sequentially launch all required applications.
 
-`start.bat`のバッチファイルの実行がすべて終わったのちに、dockerを立ち上げて、オウム返し対話システムを起動してください。
+After `start.bat` completes execution, start Docker and then launch the echo dialogue system.
 
-サンプルプログラムの一連の流れが以下になります。
+The sequence for running the sample program is as follows.
 
-### コマンドプロンプト1
+### Command Prompt 1
 
 ```
 $ start.bat
 
-AmazonPollyServerを起動します。
-AmazonPollyServerが起動しました。
-続行するには何かキーを押してください . . .
-CGEricaを起動します。
-    OculusLipSyncを起動します。
-続行するには何かキーを押してください . . .
-    CGEricaを起動します。
-続行するには何かキーを押してください . . .
-    MiracleEricaを起動します。
-続行するには何かキーを押してください . . .
-    JointMapperを起動します。
-CGEricaが起動しました。
-続行するには何かキーを押してください . . .
-FaceRecognitionServerを起動します。
-FaceRecognitionServerが起動しました。
-続行するには何かキーを押してください . . .
-TCPSocketBridge2を起動します。
-TCPSocketBridge2が起動しました。
-Google Speech APIを起動します。connectを押してソケット通信を開始してください。
-続行するには何かキーを押してください . . .
+AmazonPollyServer will be launched.
+AmazonPollyServer has been launched.
+Press any key to continue . . .
+CGErica will be launched.
+    OculusLipSync will be launched.
+Press any key to continue . . .
+    CGErica will be launched.
+Press any key to continue . . .
+    MiracleErica will be launched.
+Press any key to continue . . .
+    JointMapper will be launched.
+CGErica has been launched.
+Press any key to continue . . .
+FaceRecognitionServer will be launched.
+FaceRecognitionServer has been launched.
+Press any key to continue . . .
+TCPSocketBridge2 will be launched.
+TCPSocketBridge2 has been launched.
+Google Speech API will be launched. Press connect to start socket communication.
+Press any key to continue . . .
 
 $
+
 ```
-表示に従って順番に起動します。**順番に起動することが重要**です。（特にCGErica）
 
-一つ一つアプリが起動するため、起動を確認してからキーを押し、次のアプリの立ち上げを行ってください。
+Follow the instructions to launch each application in sequence. **Launching them in order is crucial** (especially CGErica).
 
-**これは一度だけ起動してください。**
+Since each application is launched individually, make sure to confirm each launch before pressing a key to start the next application.
 
-### コマンドプロンプト2
+**This should only be done once.**
+
+### Command Prompt 2
 
 ```
 $ docker build dslc6 -t dslc6
+
 ```
 
-まずは、docker imageをビルドします。
-`-t dslc6`と指定することで、作成されたイメージに`dslc6`の名前を与えます。
-これにより起動したいイメージを探す必要がなくなります。
+First, build the Docker image.
+By specifying `-t dslc6`, the created image is named `dslc6`, making it easier to find the image you want to launch.
 
 ```
 $ docker run --add-host="host.docker.internal:host-gateway" --rm -it dslc6
+
 ```
 
-`docker run dslc6`によって、dslc6として作成したイメージを使用し、dockerコンテナを開始します。
+By running `docker run dslc6`, the image created as `dslc6` is used to start the Docker container.
 
-`--rm`は、dockerコンテナを抜けたときに自動で削除するオプションです。これをつけないと、実行のたびにいらないコンテナがたまっていくので、つけることをお勧めします。
+- -`rm` is an option that automatically deletes the Docker container when you exit. Without this option, unnecessary containers will accumulate with each run.
+- `it` allows you to enter the container. The sample program is set to launch a Python program simultaneously with the container startup.
+While the program will run without `it`, it is recommended to enter the container to see how the program operates through standard output, etc.
+- `add-host="host.docker.internal:host-gateway"` is **mandatory**. This is necessary for socket communication between the Docker container and the host port.
+Handling this can be very cumbersome, so a Python library `dslclib` for the dialogue competition has been created. This library automatically detects whether it is inside a Docker container or on the host OS and sets the IP address accordingly.
 
-`-it`はコンテナの中に入るかどうかです。サンプルプログラムはコンテナの立ち上げと同時にpythonプログラムが起動する設定にしています。
-`-it`なしでもプログラムは起動しますが、標準出力などをしているため、コンテナ内に入ったほうがどのようにプログラムがうごいているのかがわかると思います。
+Therefore, be sure to include `--add-host="host.docker.internal:host-gateway"`.
 
-`--add-host="host.docker.internal:host-gateway"`は**必ず**つけるようにしてください。これはdockerコンテナ内から、ホストのポートとソケット通信を行うためです。
-この手の処理は非常に面倒だと思われるため、対話コンペ用のPythonライブラリ`dslclib`を作成しました。この中で、自動でdockerコンテナ内かホストOSかを認識してipアドレスを自動設定します。
+## How to Start (During Development)
 
-そのため、`--add-host="host.docker.internal:host-gateway"`は**必ず**つけるようにしてください。
+The flow is almost the same as for running the sample code, but during development, you will want to interactively modify the code.
+Therefore, the procedure is slightly adjusted to allow for more interactive development.
 
-## 起動方法 (開発時のすすめ)
+Running `start.bat` will sequentially launch all required applications.
 
-先のサンプルコード用の起動とほとんど変わりませんが、開発時にはインタラクティブにコードを書き換えたいです。
-そのため、すこし修正し、開発がインタラクティブにできるような方法を示します。
+After `start.bat` completes execution of all batch files, start Docker and then launch the echo dialogue system.
 
-`start.bat`をたたくと、必要なアプリがすべて順番に起動します。
+The overall flow remains unchanged. The Docker startup process is slightly modified.
 
-`start.bat`のバッチファイルの実行がすべて終わったのちに、dockerを立ち上げて、オウム返し対話システムを起動してください。
+The sequence for running the sample program is as follows.
 
-この流れ自体は変わりません。dockerの起動部分に少し工夫を加えます。
-
-サンプルプログラムの一連の流れが以下になります。
-
-### コマンドプロンプト1
+### Command Prompt 1
 
 ```
 $ start.bat
 
-AmazonPollyServerを起動します。
-AmazonPollyServerが起動しました。
-続行するには何かキーを押してください . . .
-CGEricaを起動します。
-    OculusLipSyncを起動します。
-続行するには何かキーを押してください . . .
-    CGEricaを起動します。
-続行するには何かキーを押してください . . .
-    MiracleEricaを起動します。
-続行するには何かキーを押してください . . .
-    JointMapperを起動します。
-CGEricaが起動しました。
-続行するには何かキーを押してください . . .
-FaceRecognitionServerを起動します。
-FaceRecognitionServerが起動しました。
-続行するには何かキーを押してください . . .
-TCPSocketBridge2を起動します。
-TCPSocketBridge2が起動しました。
-Google Speech APIを起動します。connectを押してソケット通信を開始してください。
-続行するには何かキーを押してください . . .
+AmazonPollyServer will be launched.
+AmazonPollyServer has been launched.
+Press any key to continue . . .
+CGErica will be launched.
+    OculusLipSync will be launched.
+Press any key to continue . . .
+    CGErica will be launched.
+Press any key to continue . . .
+    MiracleErica will be launched.
+Press any key to continue . . .
+    JointMapper will be launched.
+CGErica has been launched.
+Press any key to continue . . .
+FaceRecognitionServer will be launched.
+FaceRecognitionServer has been launched.
+Press any key to continue . . .
+TCPSocketBridge2 will be launched.
+TCPSocketBridge2 has been launched.
+Google Speech API will be launched. Press connect to start socket communication.
+Press any key to continue . . .
 
 $
+
 ```
-表示に従って順番に起動します。**順番に起動することが重要**です。（特にCGErica）
 
-一つ一つアプリが起動するため、起動を確認してからキーを押し、次のアプリの立ち上げを行ってください。
+Follow the instructions to launch each application in sequence. **Launching them in order is crucial** (especially CGErica).
 
-**これは一度だけ起動してください。**
+Since each application is launched individually, make sure to confirm each launch before pressing a key to start the next application.
 
+**This should only be done once.**
 
-### コマンドプロンプト2
+### Command Prompt 2
 
 ```
 $ docker build dslc6 -t dslc6
-```
-
-まずは、docker imageをビルドします。
-`-t dslc6`と指定することで、作成されたイメージに`dslc6`の名前を与えます。
-これにより起動したいイメージを探す必要がなくなります。
 
 ```
-$ docker run --add-host="host.docker.internal:host-gateway" -v <開発用のディレクトリの絶対パス>:/home/ubuntu/<任意のディレクトリ名> --rm -it dslc6 /bin/bash
+
+First, build the Docker image.
+By specifying `-t dslc6`, the created image is named `dslc6`, making it easier to find the image you want to launch.
+
+```
+$ docker run --add-host="host.docker.internal:host-gateway" -v <absolute path of the development directory>:/home/ubuntu/<any directory name> --rm -it dslc6 /bin/bash
+
 ```
 
-`docker run dslc6`によって、dslc6として作成したイメージを使用し、dockerコンテナを開始します。
+By running `docker run dslc6`, the image created as `dslc6` is used to start the Docker container.
 
-`--rm`は、dockerコンテナを抜けたときに自動で削除するオプションです。これをつけないと、実行のたびにいらないコンテナがたまっていくので、つけることをお勧めします。
+- `--rm` is an option that automatically deletes the Docker container when you exit. Without this option, unnecessary containers will accumulate with each run.
+- `-it` allows you to enter the container. The sample program is set to launch a Python program simultaneously with the container startup.
+While the program will run without `it`, it is recommended to enter the container to see how the program operates through standard output, etc.
+- `--add-host="host.docker.internal:host-gateway"` is **mandatory**. This is necessary for socket communication between the Docker container and the host port.
+Handling this can be very cumbersome, so a Python library `dslclib` for the dialogue competition has been created. This library automatically detects whether it is inside a Docker container or on the host OS and sets the IP address accordingly.
 
-`-it`はコンテナの中に入るかどうかです。サンプルプログラムはコンテナの立ち上げと同時にpythonプログラムが起動する設定にしています。
-`-it`なしでもプログラムは起動しますが、標準出力などをしているため、コンテナ内に入ったほうがどのようにプログラムがうごいているのかがわかると思います。
+Therefore, be sure to include `--add-host="host.docker.internal:host-gateway"`.
 
-`--add-host="host.docker.internal:host-gateway"`は**必ず**つけるようにしてください。これはdockerコンテナ内から、ホストのポートとソケット通信を行うためです。
-この手の処理は非常に面倒だと思われるため、対話コンペ用のPythonライブラリ`dslclib`を作成しました。この中で、自動でdockerコンテナ内かホストOSかを認識してipアドレスを自動設定します。
+- **--- Differences from the previous instructions. -----**
+- The `-v <absolute path of the development directory>:/home/ubuntu/<any directory name>` option mounts the development directory to the Docker container.
+This allows changes made both on Docker and the host to be applied.
+Eventually, you will need to copy this directory to Docker for submission, but during development, mounting the directory will allow for more comfortable development.
 
-そのため、`--add-host="host.docker.internal:host-gateway"`は**必ず**つけるようにしてください。
-
-**----- 以下から異なります。-----**
-
-`-v <開発用のディレクトリの絶対パス>:/home/ubuntu/<任意のディレクトリ名>`の指定により、dockerコンテナに開発用のディレクトリをマウントします。
-これにより、docker上での変更およびホスト上での変更の両方が適応されるようになります。
-最終的には、このディレクトリをdockerにコピーしたイメージの提出をしていただくことになりますが、開発時はマウントすることでより快適な開発が可能になります。
-
-`/bin/bash`を指定するのは、今のdockerfileでは、コンテナ起動時に、サンプル対話システムが呼び出されるのを、`/bin/bash`で上書きすることで、シェル操作を起動するためです。
-dockerfileの最後の`CMD [ "python3", "sample.py" ]`を`CMD [ "/bin/bash"]`に変更すれば済みますが、dockerの操作に自信のない方ははじめは、上に示した`docker run ...`で開発を始めることができます。
+Specifying `/bin/bash` is to override the sample dialogue system call that starts upon container startup with `/bin/bash` to initiate shell operations.
+You can modify the last line of the Dockerfile from `CMD [ "python3", "sample.py" ]` to `CMD [ "/bin/bash"]`, but those not confident with Docker operations can start development using the `docker run ...`
