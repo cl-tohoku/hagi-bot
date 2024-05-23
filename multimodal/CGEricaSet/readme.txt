@@ -1,22 +1,22 @@
 01 OculusLipSync
-音声から口の動き推定
+Mouth movement estimation from speech.
 
 02 CGErica
-CG Ericaの描画アプリ
+CG Erica drawing application
 
 03 MiracleErica
-姿勢制御
+attitude control
 
 04 JointMapper
-MiracleEricaの姿勢と表情と口の動きを統合しCGEricaに送信
+MiracleErica's posture, facial expressions and mouth movements are integrated and transmitted to CGErica
 
 
 
-起動手順
-01-OculusLipSync\OculusLipSyncServer.exeを起動
-02-CGErica\CGErica.exeを起動
-03-MiracleErica\launcherset\Erica@CG.batを起動
-04-JointMapper\run-Erica.batを起動
+Startup procedure.
+01-Launch the OculusLipSync\OculusLipSyncServer.exe
+02-Launch the CGErica\Start CGErica.exe
+03-Launch the MiracleErica\launcherset\Erica@CG.bat
+04-Launch the Start JointMapper\run-Erica.bat
 
-停止手順
-起動の逆順にアプリを閉じる
+Stopping procedure
+Close the application in the reverse order of launch.
