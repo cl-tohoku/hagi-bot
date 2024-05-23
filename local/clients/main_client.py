@@ -22,13 +22,13 @@ class MainClient(OpenAIChat):
     @property
     def instruction_remaining_slots(self) -> str:
         if not self.conversation_done:
-            instruction_lines = [f"会話を進め、残る以下の項目を決定してください。"]
+            instruction_lines = [f"会話を進め、残る以下の項目を決定してください。"]  # Proceed with the conversation and decide on the remaining items below
             for slot in self.remaining_slots:
                 instruction_lines.append(f"- {slot.text}")
 
             instruction = "\n".join(instruction_lines)
         else:
-            instruction = "全ての項目が決定しました。会話を締めてください。"
+            instruction = "全ての項目が決定しました。会話を締めてください。"  #All the items have been decided. Finish the conversation
         
         return instruction
     
@@ -49,7 +49,7 @@ class MainClient(OpenAIChat):
 
             instruction = "\n".join(instruction_lines)
         else:
-            instruction = "まだ何も決まっていません。会話を進めてください。"
+            instruction = "まだ何も決まっていません。会話を進めてください。"  # Nothing has been decided yet. Please proceed with the conversation
 
         return instruction
 
@@ -65,7 +65,7 @@ class MainClient(OpenAIChat):
         if role == Role.SYSTEM:
             raise ValueError("SYSTEM role has no character name.")
         return {
-            Role.USER: "ユウキ",
-            Role.ASSISTANT: "シズカ"
+            Role.USER: "ユウキ",  # Yuki
+            Role.ASSISTANT: "シズカ"  # Shizuka
         }[role]
     
