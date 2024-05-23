@@ -34,25 +34,25 @@ def warn_print(args, message: str) -> None:
 def main(args) -> None:
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
-    # main model の設定
+    # Settings of main model
     main_model_config = ModelConfig(
         model=args.main_model, 
         history_length=args.main_histrory_length,
         frequency_penalty=0.2,
     )
 
-    # main model のクライアントを作成
+    # Create client of main model
     main_client = MainClient(model_config=main_model_config)
 
-    # slot model の設定
-    # 1 対話だけ見せる (assistant の解答も挟まるので n 対話見せる場合は 2n-1)
+    # Settings of slot model
+    # give 1 conversation, so history_length=1 (if you want to give n conversations, history_length=2n-1)
     slot_model_config = ModelConfig(
         model=args.slot_model, 
         history_length=1,
         max_tokens=32,
     )
 
-    # slot model のクライアントを作成
+    # Create client of slot model
     slot_clients = {
         slot: SlotContentClient(
             model_config=slot_model_config,
@@ -63,9 +63,9 @@ def main(args) -> None:
         in Slot
     }
 
-    # 対話開始
+    # Start conversation
     while True:
-        # ユーザの入力を受け取る
+        # Receive user input
         uttr = input("ユウキ: ")
         user_content = uttr
 
