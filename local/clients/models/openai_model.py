@@ -39,8 +39,8 @@ class OpenAIChat:
 
     def concat_fewshot_messages(self, fewshot_messages: list[Message]) -> None:
         """
-        注意: このメソッドは `add_message` の後に呼び出してください。
-        - `add_message` に `chat_history` を `history_length` に応じて切り詰める処理があるため
+        Note: This method must be called after `add_message`!
+        - This is because `add_message` truncates the `chat_history` according to `history_length`.
         """
         self.chat_history = fewshot_messages + self.chat_history
 
@@ -118,6 +118,8 @@ class OpenAIChat:
     def request_assistant_response_stream(self) -> Generator[str, None, None]:
         '''
         ここにマネー管理のモジュールを入れ込む
+
+        Put the money management module here
         '''
         # self._result = None
 
@@ -133,7 +135,7 @@ class OpenAIChat:
         #         stream=True,
         #         logit_bias=self.logit_bias
         #     )
-        #     first_chunk = next(self._result)      # 最初の 2 応答が返ってくるまで待つ
+        #     first_chunk = next(self._result)      # Wait for the first two responses to be returned.
         #     # self.debug_print(f"first_chunk: {first_chunk}")
         #     second_chunk = next(self._result)
         #     # self.debug_print(f"second_chunk: {second_chunk}")
@@ -151,7 +153,7 @@ class OpenAIChat:
         while True:
             
             try:
-                # # WIP: メインモデルのタイムアウト
+                # # WIP: Time out of main model 
                 # if self.max_retry is None or n_retry < self.max_retry:
                 #     result = create_with_timeout()
                 # else:
@@ -225,11 +227,11 @@ class OpenAIChat:
             # print(f"{sentence}")
             # print(0)
 
-            result_sentence = copy.deepcopy(sentence)  # 追加
+            result_sentence = copy.deepcopy(sentence)  # add
             sentence = ""
             for sentence in sentences[:-1]:
                 print(f"{sentence}")
                 print("||||||||||||||||||||||||||||||||||||||||||||||||||")
             sentence = sentences[-1]
 
-            yield result_sentence  # 追加
+            yield result_sentence  # add

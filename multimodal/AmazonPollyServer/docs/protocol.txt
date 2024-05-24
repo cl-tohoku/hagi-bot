@@ -66,3 +66,74 @@ speechmark:true/false
 
 SSMLの詳細オプション
 https://docs.aws.amazon.com/ja_jp/polly/latest/dg/supportedtags.html#prosody-tag
+
+
+### English Version
+<Overview>.
+Wrapper for Amazon Polly
+https://aws.amazon.com/jp/polly/
+After registering as a user at the above site and granting IAM user Polly access rights
+Create a file %USERPROFILE%\.aws\credentials and enter the access ID and secret key you obtained as follows.
+[default].
+aws_access_key_id = ***
+aws_secret_access_key = ***
+
+Hit docs\OpenCredentialsDirectory.bat to open that directory.
+
+This application acts as a TCP server and delivers or plays audio signals.
+The communication method is synchronous communication.
+The character code is utf-8.
+Footer is a line feed code.
+
+The transmission protocol for creating audio is the same for both acquiring and playing back mp3s.
+
+<Protocol with server to retrieve mp3
+port: 2345
+(Send) playback command -> (Receive) {"result": "success", "voice_data": "byte array base64 encoded"}
+or (send) playback command -> (received) {"result": "failed"}
+
+<Protocol with the server that plays the audio
+port:3456
+(Send) playback command -> (receive) {"result": "success-start", "duration":12491} -> (receive) {"result": "success-end"}
+If the duration option is not added, the duration is -1.
+If the speechmark option is set to true, the time from the beginning of speech in word and viseme units is added in JsonArray format.
+{"result": "success-start", "duration":1303, "speechmarks":[{"time":6, "type": "word", "start":53, "end":62, "value": "test"},{"time":6," type": "viseme", "value": "t"},{"time":75, "type": "viseme", "value":"@"},{"time":158, "type": "viseme", "value": "s"},{"time":228, "type":" viseme", "value": "i"},{"time":284, "type": "viseme", "value": "t"},{"time":344, "type": "viseme", "value": "o"},{"time":389, "type": "word","" start":62, "end":71, "value": "test"},{"time":389, "type": "viseme", "value": "t"},{"time":446, "type": "viseme", "value":"@"},{"time":520," type": "viseme", "value": "s"},{"time":598, "type": "viseme", "value": "i"},{"time":658, "type": "viseme", "value": "t"},{"time":712, "type":" viseme", "value": "o"},{"time":811, "type": "word", "start":71, "end":80, "value": "test"},{"time":811, "type": "viseme", "value": "t"},{"time ":879, "type": "viseme", "value":"@"},{"time":970, "type": "viseme", "value": "s"},{"time":1028, "type": "viseme", "value": "i"},{"time":1109 },{"time":1178, "type": "viseme", "value": "o"},{"time":1303, "type": "viseme", "value": "sil"}]}
+
+Or (send) playback command -> (receive) {"result": "failed"}
+The unit for duration is msec and the flag is sent at the end of playback.
+
+Command to stop playback during playback.
+(Send) {"engine": "STOP"} → (Receive) {"result": "success-end"}
+
+Command to check whether audio is currently being played.
+(Send) {"engine": "ISSPEAKING"} → (Receive) {"isSpeaking":true/false}
+
+
+
+<Speech synthesis and playback commands
+All in JSON format.
+
+[simple text].
+Parameters.
+speaker:Mizuki, Takumi
+pitch:50~100~200
+speed:50~100~400
+volume:50~100~200
+vocal-tract-length:50~0~100
+duration-information:true/false
+Speechmark:true/false
+Pitch, speed and volume are set to 100 for compatibility with DocomoTTS.
+
+Command sample.
+{"engine": "POLLY", "speaker": "Mizuki", "pitch": 100, "volume":100, "speed":100, "vocal-tract-length":0, "duration-information":false," "speechmark":false, "text": "test-test-test-test"}
+
+
+[ssml]
+speaker:Mizuki, Takumi
+duration-information:true/false
+speechmark:true/false
+Command sample.
+{"engine": "POLLY-SSML", "speaker": "Mizuki", "duration-information":false, "speechmark":false, "text":"<speak>Hello. My name is <prosody volume="loud\" pitch="high\" rate="slow\">Shoko</prosody>. </speak>"}\n
+
+Advanced options for SSML
+https://docs.aws.amazon.com/ja_jp/polly/latest/dg/supportedtags.html#prosody-tag

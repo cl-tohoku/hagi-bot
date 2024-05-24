@@ -12,7 +12,7 @@ import random
 
 class SampleModel:
     """SampleModel
-    オウム返しをする対話モデルサンプル
+    Sample dialogue model for parroting
 
     Attributes
     ----------
@@ -44,43 +44,43 @@ class SampleModel:
             self.tts.speech(" ")
 
     def start(self) -> None:
-        res = "こんにちは。オウム返しをします。"  # エリカに発話させる内容
+        res = "こんにちは。オウム返しをします。"  # "hello, I'm parroting."
         print(res)
 
         self.tts.speech(res)
-        self.express.express(ExpressionType.FullSmile)  # エリカの表情
-        self.body.play_motion(MotionType.Greeting)  # エリカの動作
+        self.express.express(ExpressionType.FullSmile)  # Erica's facial expression
+        self.body.play_motion(MotionType.Greeting)  # Erica's motion
 
         while True:
             try:
-                output = self.sr.listen(interim=True)  # 聞き取ったユーザの発話について
-                cond = output.type  # ユーザが発話常態かどうか
+                output = self.sr.listen(interim=True)  # On the user's speech that was heard
+                cond = output.type  # Whether the user is in a speech state or not.
                 print(cond)
-                uttr = output.result  # ユーザの発話
+                uttr = output.result  # user utterance
 
-                if cond == STTRecognitionType.InterimResult:  # 発話途中ならば
+                if cond == STTRecognitionType.InterimResult:  # If in the middle of speech.
                     if random.random() > 0.3:
-                        self.body.play_motion(MotionType.Nod)  # うなずく
+                        self.body.play_motion(MotionType.Nod)  # nodding
                     else:
-                        self.body.play_motion(MotionType.NodDeep)  # 深くうなずく
+                        self.body.play_motion(MotionType.NodDeep)  # nodding deeply
                     continue
                 
                 print(uttr)
-                if uttr in ("さようなら", "さよなら"):
-                    self.tts.speech("ありがとうございました。さようなら。")
+                if uttr in ("さようなら", "さよなら"): # If the user says goodbye
+                    self.tts.speech("ありがとうございました。さようなら。") # "Thank you. Goodbye."
                     break
 
                 # オウム返しをさせる
-                self.tts.speech(f"はい、{uttr}、ですね" , speed=150, volume=200, pitch=150)
+                self.tts.speech(f"はい、{uttr}、ですね" , speed=150, volume=200, pitch=150) # "Yes, it is {uttr}."
                 
             except KeyboardInterrupt:
-                print("対話を終了します。")
+                print("対話を終了します。") # "End of dialogue."
                 break
             except Exception as e:
-                print(f"予期せぬエラー`{e}`です。")
+                print(f"予期せぬエラー`{e}`です。") # "Unexpected error."
                 raise e
 
-        print("対話が正常に終了しました。")
+        print("対話が正常に終了しました。") # "The dialogue has ended successfully."
         self.close()
 
 

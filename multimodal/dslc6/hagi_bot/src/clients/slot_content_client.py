@@ -28,8 +28,8 @@ class SlotContentClient(SlotClient):
     @property
     def specific_instruction(self) -> str:
         if self.slot == Slot.STATION:
-            # 学内ならば駅近
-            f"{Slot.STATION.text}が学内に決まった場合は、会場は駅近の近くに決まったものとしてください。"
+            # If on campus, near a train station
+            f"{Slot.STATION.text}が学内に決まった場合は、会場は駅近の近くに決まったものとしてください。"  # If {Slot.STATION.text} is decided on campus, the venue is decided near the station.
         return ""
 
     @property

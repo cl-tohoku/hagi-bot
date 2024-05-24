@@ -19,13 +19,13 @@ class RobotBodyController(object):
 
     def __call__(self, key):
         # ここにmotionを追加していく
-        if key == "greeting" or key == 'お辞儀':
+        if key == "greeting" or key == 'お辞儀': # お辞儀: greeting
             self.playMotion(MotionType.Greeting)
-        elif key == "nod" or key == "うなずく":
+        elif key == "nod" or key == "うなずく": # うなずく: nodding
             self.playMotion(MotionType.Nod)
-        elif key == "nod_deep" or key == "深くうなずく":
+        elif key == "nod_deep" or key == "深くうなずく":    # 深くうなずく: nodding deeply
             self.playMotion(MotionType.NodDeep)
-        elif key == "nono" or key == "首を横に振る":
+        elif key == "nono" or key == "首を横に振る":  # 首を横に振る: shaking head
             self.playMotion(MotionType.Nono)
         elif key == "lbp":
             self.playMotion(MotionType.LeftHandBasePositin)
@@ -62,7 +62,7 @@ class RobotBodyController(object):
             time.sleep(1.0)
             self.body.play_motion(MotionType.RightHandBasePosition)
             self.body.play_motion(MotionType.LeftHandBasePositin)
-        elif key == "thinking" or key == "悩む":
+        elif key == "thinking" or key == "悩む": # 悩む: thinking
             self.body.play_motion("right_hand_grasp_mouth")
             self.body.play_motion("greeting_deep_head")
             self.body.play_motion("greeting_deep_eye")
@@ -109,21 +109,21 @@ class RobotExpressionController(object):
             self.setExpression(ExpressionType.MouthO)
         elif key == "n":
             self.setExpression(ExpressionType.Normal)
-        elif key == "fs" or key == "喜び" or key == "期待":
+        elif key == "fs" or key == "喜び" or key == "期待":  # 喜び: happy, 期待: hope
             self.setExpression(ExpressionType.FullSmile)
-        elif key == "s" or key == "平常" or key == "信頼":
+        elif key == "s" or key == "平常" or key == "信頼":  # 平常: neutral, 信頼: trust
             self.setExpression(ExpressionType.Smile)
-        elif key == "b" or key == "悲しみ":
+        elif key == "b" or key == "悲しみ":  # 悲しみ: sadness
             self.setExpression(ExpressionType.Bad)
-        elif key == "an" or key == "怒り":
+        elif key == "an" or key == "怒り": # 怒り: anger
             self.setExpression(ExpressionType.Angry)
-        elif key == "ec" or key == "嫌悪":
+        elif key == "ec" or key == "嫌悪": # 嫌悪: disgust
             self.setExpression(ExpressionType.EyeClose)
-        elif key == "eo" or key == "驚き":
+        elif key == "eo" or key == "驚き":  # 驚き: surprise
             self.setExpression(ExpressionType.EyeOpen)
         elif key == "eu":
             self.setExpression(ExpressionType.EyeUp)
-        elif key == "ed" or key == "恐れ":
+        elif key == "ed" or key == "恐れ": # 恐れ: fear
             self.setExpression(ExpressionType.EyeDown)
 
     def setExpression(self, emotion):
@@ -131,8 +131,8 @@ class RobotExpressionController(object):
 
 class CorrespondUserExpression(RobotExpressionController):
     '''
-    基本ミラーで、一部相手の表情に対応する表情
-    例えば、相手が怒っている時に自分も怒ったら喧嘩になるので、こちらは気まずい表情。など
+    Basicaly mirroring, partly a facial expression that corresponds to the other person's facial expression.
+    For example, if you get angry when the other person is angry and you get angry too, you will get into a fight, so this is an awkward expression. Etc.
     '''
     # def __init__(self):
     #     super().__init__()
@@ -165,20 +165,20 @@ class RobotSpeechController(object):
     
     def robotSpeech(self, sentence="", emotion="平常", add_volume=0, add_speed=0, add_pitch=0):
         '''
-        平常から喜んだあと戻る時、ピッチの落差が激しいので、変えたいという気持ち
-        高い感情のピッチを平常+5以内に収めたい
-        下はもう少し試してみる価値あり
+        When returning from normal to happy, there is a severe drop in pitch and I want to change it
+        Want to keep high emotional pitch within normal +5
+        Below is worth a little more experimentation
         '''
         emotion_to_voice = {
-            '喜び': (125, 200, 120), # 元pitch=125
-            '悲しみ': (120, 100, 105), # 元pitch=105
-            '期待': (120, 150, 117), 
-            '驚き': (125, 250, 115), 
-            '怒り': (120, 230, 100), # 元pitch=100
-            '恐れ': (125, 250, 115), 
-            '嫌悪': (120, 100, 95), # 元pitch=95
-            '信頼': (120, 100, 117), # 元pitch=120
-            '平常': (120, 100, 115),
+            '喜び': (125, 200, 120), # 喜び: happy, default pitch=125 
+            '悲しみ': (120, 100, 105), # 悲しみ: sadness, default pitch=105
+            '期待': (120, 150, 117), # 期待: hope
+            '驚き': (125, 250, 115), # 驚き: surprise
+            '怒り': (120, 230, 100), # 怒り: angry, default pitch=100
+            '恐れ': (125, 250, 115), # 恐れ: fear
+            '嫌悪': (120, 100, 95), # 嫌悪: disgust, default pitch=95
+            '信頼': (120, 100, 117), # 信頼: trust, default pitch=120
+            '平常': (120, 100, 115), # 平常: neutral
         }
         speed, volume, pitch = emotion_to_voice[emotion]
         self.tts.speech(sentence, speed=speed+add_speed, volume=volume+add_volume, pitch=pitch+add_pitch, wait_queue=True, max_num_queue=500)
@@ -186,9 +186,9 @@ class RobotSpeechController(object):
 if __name__ == '__main__':
     module = RobotBodyController()
     # module('a')
-    # module('喜び')
-    # module('嫌悪')
-    module("悩む")
+    # module('喜び') # 喜び: happy
+    # module('嫌悪') # 嫌悪: disgust
+    module("悩む") # 悩む: thinking
     
     while(True):
         pass

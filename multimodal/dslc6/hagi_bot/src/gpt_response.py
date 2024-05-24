@@ -54,43 +54,42 @@ def get_args():
     args = parser.parse_args()
 
     if args.main_model != "gpt-4":
-        warn_print(args, "gpt-4 以前のモデルでは表情が変化しない可能性があります。")
+        warn_print(args, "gpt-4 以前のモデルでは表情が変化しない可能性があります。")  # The model before gpt-4 may not change the facial expression.
     if args.slot_model != "gpt-4":
-        warn_print(args, "gpt-4 以前のモデルではスロットの出力が安定しません。安定には few-shot prompt の追加が必要です。")
+        warn_print(args, "gpt-4 以前のモデルではスロットの出力が安定しません。安定には few-shot prompt の追加が必要です。") # The model before gpt-4 may not stabilize the output of the slot. Adding a few-shot prompt is necessary for stability.
         if args.enable_fewshot:
             counts = get_fewshot_messages_counts()
             counts_str = ", ".join([f"{slot.text}: {count}件" for slot, count in counts.items()])
             count_sum = sum(counts.values())
-            warn_print(args, f"現在登録されている few-shot の対話文は {counts_str} の計{count_sum}件です。")
+            warn_print(args, f"現在登録されている few-shot の対話文は {counts_str} の計{count_sum}件です。") # The number of registered few-shot dialogues is {counts_str} in total {count_sum} cases.
         else:
-            warn_print(args, "few-shot prompt を有効にするには `--enable-fewshot` を指定してください。")
-        
+            warn_print(args, "few-shot prompt を有効にするには `--enable-fewshot` を指定してください。") # To enable few-shot prompt, specify `--enable-fewshot`.
 
     return args
 
 
-# 追加
-# 対話スタート
+# adding
+# Start conversation
 def start_conversation(args):
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
-    # main model の設定
-    IM_END_TOKEN_ID = 100265     # GPT-3.5 turbo と GPT-4 で共通
+    # settings of main model
+    IM_END_TOKEN_ID = 100265     # Common for GPT-3.5 turbo and GPT-4
     main_model_config = ModelConfig(
         model=args.main_model, 
         history_length=args.main_histrory_length,
         frequency_penalty=0.3,
         timeout=args.main_model_timeout,
         max_retry=args.main_model_max_retry,
-        # max_tokens=args.max_tokens, # 適切な値を設定する
+        # max_tokens=args.max_tokens, # Set appropriate values
         # logit_bias={IM_END_TOKEN_ID: args.ending_bias}     # https://github.com/openai/openai-python/issues/572
     )
 
-    # main model のクライアントを作成
+    # make client of main model
     main_client = MainClient(model_config=main_model_config)
 
-    # slot model の設定
-    # 1 対話だけ見せる (assistant の解答も挟まるので n 対話見せる場合は 2n-1)
+    # settings of slot model
+    # Show only one dialogue (2n-1 if n dialogs are shown because the ASSISTANT's answers are also interspersed)
     slot_model_config = ModelConfig(
         model=args.slot_model, 
         history_length=1,
@@ -99,7 +98,7 @@ def start_conversation(args):
         max_retry=args.slot_model_max_retry
     )
 
-    # slot model のクライアントを作成
+    # make client of slot model
     slot_clients = {
         slot: SlotContentClient(
             model_config=slot_model_config,
@@ -112,51 +111,51 @@ def start_conversation(args):
 
     return main_client, slot_clients
 
-# シズカの応答生成
+# response generation of Shizuka
 def shizuka_response(args, main_client, slot_clients, uttr):
-    # ユーザの入力を受け取る
+    # receive user input
     user_content = uttr
 
-    # メインモデルの応答時間の計測開始
+    # Start measuring the response time of the main model.
     start_time = time.time()
 
-    # ユーザの入力をメインモデルに渡す
+    # Pass user input to the main model.
     main_client.add_user_input(user_content)
 
-    # メインモデルの応答を要求し、応答を出力する
-    debug_print(args, "メインモデルへのリクエスト開始")
+    # Requests a response from the main model and outputs a response
+    debug_print(args, "メインモデルへのリクエスト開始")     # Request to the main model started
     if args.stream:
         for sentence in main_client.request_and_print_assistant_response_stream():
             yield sentence
 
     else:
         main_client.request_and_print_assistant_response()
-    # メインモデルの応答時間の計測終了
+    # End of main model response time measurement.
     end_time = time.time()
     elapsed_time = end_time - start_time
 
-    # メインモデルの応答時間を出力する (DEBUG)
+    # Output main model response time (DEBUG)
     debug_print(args, f"elapsed_time: {elapsed_time:.2f} sec")
 
-    # スロットコンテンツモデルの応答時間の計測開始
+    # Start measuring the response time of the slot content model.
     start_time = time.time()
 
-    # スロットコンテンツモデルに渡す対話履歴を取得する
+    # Obtain dialogue history to be passed to the slot content model.
     main_chat_history = main_client.chat_history
 
-    # スロットコンテンツモデルに渡す対話履歴を出力する (DEBUG)
+    # Output dialogue history to be passed to the slot content model (DEBUG)
     # debug_print(args, f"main_chat_history: {main_chat_history}")
 
-    # メインモデルの対話履歴をスロットコンテンツモデルに渡す
+    # Passing the dialogue history of the main model to the slot content model.
     for slot in Slot:
-        # スロットコンテンツモデルに最新の対話履歴を入力として渡す
+        # Passing the latest dialogue history as input to the slot content model.
         slot_clients[slot].add_main_chat_history_as_user_input(
             main_chat_history=main_chat_history,
             enable_fewshot=args.enable_fewshot
         )
 
-    # スロットコンテンツモデルの応答を要求する
-    debug_print(args, "スロットモデルへのリクエスト開始")
+    # Request response to slot content model.
+    debug_print(args, "スロットモデルへのリクエスト開始")    # Request to the slot model started
     asyncio.run(
         await_all(
             [
@@ -167,23 +166,23 @@ def shizuka_response(args, main_client, slot_clients, uttr):
         )
     )
 
-    # スロットコンテンツモデルの応答を受け取る
+    # Receive slot content model response.
     slot_contents = {
         slot: slot_client.slot_content
         for slot, slot_client
         in slot_clients.items()
     }
 
-    # スロットコンテンツモデルの応答時間の計測終了
+    # End of measurement of response times for slot content models.
     end_time = time.time()
     elapsed_time = end_time - start_time
 
-    # スロットコンテンツモデルの応答時間を出力する (DEBUG)
+    #  Output response time of slot content model (DEBUG)
     debug_print(args, f"elapsed_time: {elapsed_time:.2f} sec")
 
-    # スロットコンテンツモデルの応答を出力する (DEBUG)
+    # Output slot content model response (DEBUG)
     slot_contents_str = ", ".join([f"{slot.text}: {content}" for slot, content in slot_contents.items()])
     debug_print(args, f"slot_contents: {{{slot_contents_str}}}")
 
-    # メインモデルの保持するスロットコンテンツを更新する
+    # Update slot content held by the main model.
     main_client.slot_contents = slot_contents
