@@ -39,8 +39,8 @@ class OpenAIChat:
 
     def concat_fewshot_messages(self, fewshot_messages: list[Message]) -> None:
         """
-        注意: このメソッドは `add_message` の後に呼び出してください。
-        - `add_message` に `chat_history` を `history_length` に応じて切り詰める処理があるため
+        Note: This method must be called after `add_message`.
+        - Because `add_message` truncates the `chat_history` according to the `history_length`, the
         """
         self.chat_history = fewshot_messages + self.chat_history
 
@@ -116,7 +116,7 @@ class OpenAIChat:
     
     def request_assistant_response_stream(self) -> Generator[str, None, None]:
         '''
-        ここにマネー管理のモジュールを入れ込む
+        Putting the money management module in here.
         '''
         # self._result = None
 
@@ -223,11 +223,11 @@ class OpenAIChat:
             sentence += continuation
             # print(f"{sentence}")
 
-            result_sentence = copy.deepcopy(sentence)  # 追加
+            result_sentence = copy.deepcopy(sentence)
             sentence = ""
             for sentence in sentences[:-1]:
                 print(f"{sentence}")
                 print("||||||||||||||||||||||||||||||||||||||||||||||||||")
             sentence = sentences[-1]
 
-            yield result_sentence  # 追加
+            yield result_sentence

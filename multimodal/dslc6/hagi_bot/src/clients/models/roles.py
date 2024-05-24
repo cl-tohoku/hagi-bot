@@ -11,6 +11,6 @@ class Role(Enum):
         if self == Role.SYSTEM:
             raise ValueError("SYSTEM role has no character name.")
         return {
-            Role.USER: "ユウキ",
-            Role.ASSISTANT: "シズカ"
+            Role.USER: "ユウキ", # Yuki
+            Role.ASSISTANT: "シズカ" # Shizuka
         }[self]

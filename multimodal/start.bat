@@ -1,83 +1,83 @@
 @echo off
 cd /d %~dp0
 
-echo AmazonPollyServerを起動します。
+echo AmazonPollyServer will be launched.
 pushd AmazonPollyServer
 start 00-launch-AmazonPollyServer.bat
 popd
-echo AmazonPollyServerが起動しました。
+echo AmazonPollyServer has been launched.
 pause
 echo
 
-echo Voicemeeter Bananaを起動します。
+echo Voicemeeter Banana will be launched.
 pushd "C:\Program Files (x86)\VB\Voicemeeter"
 start voicemeeterpro.exe
 popd
-echo Voicemeeter Bananaが起動しました。
-echo 口形状生成のため、Voicemeeter Bananaウィンドウ右上のA1を押して、規定デバイスを指定してください。
-echo デバイスの指定が完了したら、何かのキーを押して進んでください。
+echo Voicemeeter Banana has been launched.
+echo Press A1 at the top right of the Voicemeeter Banana window and specify the default device for mouth shape generation.
+echo Once the device is specified, press any key to continue.
 pause > nul
 echo
 
-echo 続いて、口形状生成のため、コントロールパネルの「サウンド」→「再生」タブでVoicemeeterinputを「規定のデバイス」に、「録音」タブでVoicemeeterOutputを「規定のデバイス」に設定します。
-echo コントロールパネルを起動します。
+echo Next, for mouth shape generation, set Voicemeeterinput as the "default device" in the "Playback" tab and VoicemeeterOutput as the "default device" in the "Recording" tab of the control panel's "Sound".
+echo The control panel will be launched.
 timeout 1 > nul
 start control mmsys.cpl
-echo 上の「再生」タブでVoicemeeterinputを「規定のデバイス」、「録音」タブでVoicemeeterOutputを「規定のデバイス」に設定ができたら、何かのキーを押して進んでください。
+echo After setting Voicemeeterinput as the "default device" in the "Playback" tab and VoicemeeterOutput as the "default device" in the "Recording" tab, press any key to continue.
 pause
 echo
 
-echo CGEricaを起動します。
-echo     OculusLipSyncを起動します。
+echo CGErica will be launched.
+echo     OculusLipSync will be launched.
 pushd CGEricaSet\01-OculusLipSync
 start OculusLipSyncServer.exe
 popd
 pause
 echo
 
-echo     CGEricaを起動します。
+echo     CGErica will be launched.
 pushd CGEricaSet\02-CGErica
 start CGErica.exe
 popd
 pause
 echo
 
-echo     MiracleEricaを起動します。
+echo     MiracleErica will be launched.
 pushd CGEricaSet\03-MiracleErica\launcherset
 start Erica@CG.bat
 popd
 pause
 echo
 
-echo     JointMapperを起動します。
+echo     JointMapper will be launched.
 pushd CGEricaSet\04-JointMapper
 start run-Erica.bat
 popd
-echo CGEricaが起動しました。
+echo CGErica has been launched.
 pause
 echo
 
-echo FaceRecognitionServerを起動します。
+echo FaceRecognitionServer will be launched.
 pushd FaceRecognitionServer
 start run.bat
 popd
-echo FaceRecognitionServerが起動しました。
+echo FaceRecognitionServer has been launched.
 echo
 
-echo TCPSocketBridge2を起動します。
+echo TCPSocketBridge2 will be launched.
 pushd WebSocketBridge2
 start Launcher2-TCPServer.bat
 popd
-echo TCPSocketBridge2が起動しました。
+echo TCPSocketBridge2 has been launched.
 echo
 
-echo Google Speech APIを起動します。connectボタンを押して、ソケット通信を開始してください。
+echo Google Speech API will be launched. Press connect to start socket communication.
 start chrome https://hil-erica.github.io/GoogleSpeechAPI/speech_recognition.html
-echo 設定ができたら、何かのキーを押してセットアップを完了してください。
+echo Once the setup is complete, press any key to finish.
 pause > nul
 echo
 
-echo これですべての必要なソフトウェアが立ち上がりました。これで対話システムを開始することができます。
-echo お疲れさまでした!
+echo All necessary software has been launched. You can now start the dialogue system.
+echo Well done!
 
 cmd /k
